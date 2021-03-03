@@ -141,7 +141,7 @@ function Budgets() {
                     <ListItem key={budget._id}>
                       <a href={"/budgets/" + budget._id}>
                         <strong>
-                          Title: {budget.title} || Quantity: {budget.quantity} || Expires: {budget.expires} || Buy by: {formatDate(budget.date)} Cost: {budget.cost} || Type {budget.type}
+                          Title: {budget.title} || Quantity: {budget.quantity} || Expires: {formatDate(budget.expires)} || Buy by: {formatDate(budget.date)} Cost: {budget.cost} || Type {budget.type}
                         </strong>
                       </a>
                       <DeleteBtn onClick={() => deleteBudget(budget._id)} />

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -7,7 +7,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
 } from "reactstrap";
 
 
@@ -33,7 +32,7 @@ class Nav1 extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink
+                <Link
                   to="/"
                   className={
                     window.location.pathname === "/" ||
@@ -43,22 +42,22 @@ class Nav1 extends Component {
                   }
                 >
                   CTRLfreak
-              </NavLink>
+              </Link>
               </NavItem>
               <NavItem>
-                <NavLink
-                  to="/inventory"
+                <Link
+                  to="/Budgets"
                   className={
-                    window.location.pathname === "/inventory"
+                    window.location.pathname === "/Budgets"
                       ? "nav-link active"
                       : "nav-link"
                   }
                 >
                   Inventory
-              </NavLink>
+              </Link>
               </NavItem>
               <NavItem>
-                <NavLink
+                <Link
                   to="/logout"
                   className={
                     window.location.pathname === "/logout"
@@ -67,7 +66,7 @@ class Nav1 extends Component {
                   }
                 >
                   Log out
-              </NavLink>
+              </Link>
               </NavItem>
             </Nav>
           </Collapse>
