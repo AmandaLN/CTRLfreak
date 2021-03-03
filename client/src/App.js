@@ -1,6 +1,6 @@
 import React from "react";
-import Budgets from "./pages/Budgets";
 import Nav1 from "./components/Nav";
+import Welcome from "./pages/welcome";
 
 
 
@@ -8,6 +8,7 @@ function App() {
   return (
     <>
       <Nav1 />
+	    <Welcome/>
       <Budgets />
     </>
   );
