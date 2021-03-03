@@ -5,14 +5,14 @@ import Budgets from "./pages/Budgets";
 
 
 
+
 function App() {
-  return (
-    <>
-      <Nav1 />
-	    <Welcome/>
-      <Budgets />
-    </>
-  );
+	return (
+		<>
+			<Nav1 />
+			<Welcome />
+		</>
+	);
 }
 
 export default App;
