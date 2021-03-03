@@ -8,7 +8,8 @@ function App() {
   return (
     <>
       <Nav1 />
-	  <Welcome/>
+	    <Welcome/>
+      <Budgets />
     </>
   );
 }
