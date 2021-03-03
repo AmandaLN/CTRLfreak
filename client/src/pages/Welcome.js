@@ -6,7 +6,6 @@ const Welcome = () => {
 		<Login/>
 	);
 };
-
 export default Welcome;
 
 //conditional rendering to slim down, if ()
