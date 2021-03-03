@@ -1,13 +1,15 @@
 import React from "react";
 import Books from "./pages/Books";
-import Nav from "./components/Nav";
+import Nav1 from "./components/Nav";
+
+
 
 function App() {
   return (
-    <div>
-      <Nav />
+    <>
+      <Nav1 />
       <Books />
-    </div>
+    </>
   );
 }
 
