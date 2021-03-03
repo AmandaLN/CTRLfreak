@@ -1,6 +1,8 @@
 import React from "react";
 import Nav1 from "./components/Nav";
 import Welcome from "./pages/Welcome";
+import Budgets from "./pages/Budgets";
+
 
 
 
