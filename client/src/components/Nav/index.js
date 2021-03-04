@@ -27,7 +27,7 @@ class Nav1 extends Component {
     return (
       <>
         <Navbar color="inverse" light expand="md" className="bg-info">
-          <NavbarBrand href="/">Home</NavbarBrand>
+          <NavbarBrand href="/"></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -41,7 +41,7 @@ class Nav1 extends Component {
                       : "nav-link"
                   }
                 >
-                  CTRLfreak
+                  Home
               </Link>
               </NavItem>
               <NavItem>
