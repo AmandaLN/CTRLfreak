@@ -9,8 +9,9 @@ import { Input, TextArea, FormBtn } from "../Form";
 
  function Budgets({userId, user}) {
   // Setting our component's initial state
-  console.log(user)
-  console.log(userId, "id")
+ 
+  console.log(user, "username budget index")
+  console.log(userId, "id budget index")
   const [budgets, setBudgets] = useState([])
   const [formObject, setFormObject] = useState({
     title: "",
@@ -37,8 +38,8 @@ import { Input, TextArea, FormBtn } from "../Form";
 }
 
   // Loads all books and sets them to books
-  function loadBudget(userId) {
-    console.log(userId)
+ function loadBudget(userId) {
+    console.log(userId, "budget userid")
     API.getBudget(userId)
       .then(res => {
         console.log(res.data)
@@ -66,7 +67,7 @@ import { Input, TextArea, FormBtn } from "../Form";
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.title && formObject.type) {
-      API.saveBudget({
+      API.updateBudget(userId, {
         title: formObject.title,
         type: formObject.type,
         quantity: formObject.quantity,

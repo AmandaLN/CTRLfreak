@@ -8,7 +8,7 @@ const routes = require("./routes");
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
-
+// mongoose.set('useFindAndModify', false);
 
 const app = express();
 const PORT = process.env.PORT || 3001;

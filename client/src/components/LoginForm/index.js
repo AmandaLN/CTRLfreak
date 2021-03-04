@@ -24,7 +24,7 @@ function LoginForm({ onLogin }) {
 					<input className="form-control" ref={passwordRef} type='password' name="password" placeholder='Password' /><br />
 					<button className="btn btn-success" type='submit'>
 						Submit
-						</button>
+					</button>
 				</div>
 			</form>
 		</Card>

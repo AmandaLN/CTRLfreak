@@ -25,9 +25,9 @@ module.exports = {
 			});
 		}
 	},
-	register: function (req, res, next) {
+	register: async function (req, res, next) {
 		console.log('/register handler', req.body);
-		Account.register(new Account({ username: req.body.username }), req.body.password, (err, account) => {
+		await Account.register(new Account({ username: req.body.username }), req.body.password, (err, account) => {
 			if (err) {
 				return res.status(500).send({ error: err.message });
 			}
@@ -54,7 +54,7 @@ module.exports = {
 			if (err) {
 				return next(err);
 			}
-			console.log(`User at login ${req.user.username}`);
+			console.log(`User at login ${req.body.username}`);
 
 			res.status(200).json({ test: " testvalue" });
 		});
