@@ -1,5 +1,3 @@
-
-
 import React from 'react'
 import {
 	BrowserRouter as Router,
@@ -16,9 +14,6 @@ import PublicRoute from "./pages/PublicRoute";
 import ProtectedRoute from "./pages/ProtectedRoute";
 
 import { UserProvider } from "./utils/UserContext";
-
-
-
 
 function App() {
 	return (
