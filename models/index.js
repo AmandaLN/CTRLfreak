@@ -1,3 +1,4 @@
 module.exports = {
-  Budget: require("./budget")
+  Budget: require("./budget"),
+  Account: require("./account")
 };
