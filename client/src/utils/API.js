@@ -7,10 +7,12 @@ export default {
   },
   // Gets the book with the given id
   getBudget: function(id) {
+    console.log(id, "getbudget")
     return axios.get("/api/budget/" + id);
   },
   // Deletes the book with the given id
   deleteBudget: function(id) {
+    
     return axios.delete("/api/budget/" + id);
   },
   // Saves a book to the database

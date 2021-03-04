@@ -2,14 +2,36 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const budgetSchema = new Schema({
-  title: { type: String, required: true },
-  type: { type: String, required: true },
-  quantity: { type: Number, default: 1 },
   user: String,
-  expires: { type: Date, default: Date.now },
-  cost: { type: Number, default: 0 },
-  date: { type: Date, default: Date.now }
-});
+  expenses: [
+    {
+      title: {
+        type: String,
+        trim: true,
+        required: "Title is required",
+      },
+      type: {
+        type: String,
+        trim: true,
+        required: "Type of expense is required",
+        
+      },
+      quantity: {
+        type: Number,
+        required: "Quantity is required",
+        default: 1
+      },
+      expires: Date,
+      cost: {
+        type: Number,
+        default: 0,
+      }
+    }],
+    date: {
+      type: Date,
+      default: Date.now(),
+    }
+  });
 
 const Budget = mongoose.model("Budget", budgetSchema);
 

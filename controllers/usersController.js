@@ -1,4 +1,5 @@
 const Account = require("../models/account");
+const db = require("../models");
 const passport = require('passport');
 
 module.exports = {
@@ -30,7 +31,7 @@ module.exports = {
 			if (err) {
 				return res.status(500).send({ error: err.message });
 			}
-
+			db.Budget.create({user: req.body.username})
 			passport.authenticate('local')(req, res, () => {
 				req.session.save((err) => {
 					if (err) {
