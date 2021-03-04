@@ -1,4 +1,4 @@
-import Logo from "./components/logo";
+
 
 import React from 'react'
 import {
@@ -26,7 +26,6 @@ function App() {
 		<Router>
 			<div>
 				<Nav className="App-header" />
-    		<Logo />
 				<Container>
 					<Switch>
 						<Route path="/public" component={PublicRoute} />
