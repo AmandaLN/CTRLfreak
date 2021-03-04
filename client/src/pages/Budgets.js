@@ -5,19 +5,24 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+let userActive
 
-function Budgets() {
+function Budgets({user}) {
   // Setting our component's initial state
+  console.log(user)
+  userActive = user
   const [budgets, setBudgets] = useState([])
   const [formObject, setFormObject] = useState({
     title: "",
     type: "",
     quantity: "",
-    user: "",
+    user: userActive,
     expires: "",
     cost: "",
     date: Date.now(),
   })
+  // setFormObject({...formObject, "user": {user}})
+  console.log(formObject.cost);
 
   // Load all books and store them with setBooks
   useEffect(() => {
@@ -67,7 +72,7 @@ function Budgets() {
         title: formObject.title,
         type: formObject.type,
         quantity: formObject.quantity,
-        user: formObject.user,
+        user: userActive,
         expires: formObject.expires,
         cost : formObject.cost,
       })
@@ -75,7 +80,6 @@ function Budgets() {
         title: "",
         type: "",
         quantity: "",
-        user: "",
         expires: "",
         cost : "",
         }))
@@ -141,7 +145,7 @@ function Budgets() {
                     <ListItem key={budget._id}>
                       <a href={"/budgets/" + budget._id}>
                         <strong>
-                          Title: {budget.title} || Quantity: {budget.quantity} || Expires: {formatDate(budget.expires)} || Buy by: {formatDate(budget.date)} Cost: {budget.cost} || Type {budget.type}
+                          Title: {budget.title} || Quantity: {budget.quantity} || Expires: {budget.expires} || Buy by: {formatDate(budget.date)} Cost: {budget.cost} || Type {budget.type}
                         </strong>
                       </a>
                       <DeleteBtn onClick={() => deleteBudget(budget._id)} />
