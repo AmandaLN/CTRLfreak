@@ -1,3 +1,5 @@
+import Logo from "./components/logo";
+
 import React from 'react'
 import {
 	BrowserRouter as Router,
@@ -17,12 +19,14 @@ import { UserProvider } from "./utils/UserContext";
 
 
 
+
 function App() {
 	return (
 		<UserProvider>
 		<Router>
 			<div>
 				<Nav className="App-header" />
+    		<Logo />
 				<Container>
 					<Switch>
 						<Route path="/public" component={PublicRoute} />
@@ -33,6 +37,7 @@ function App() {
 					</Switch>
 				</Container>
 			</div>
+
 		</Router>
 	</UserProvider>
 
