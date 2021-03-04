@@ -99,7 +99,7 @@ function Budgets({user}) {
               <Input
                 onChange={handleInputChange}
                 name="title"
-                placeholder="Title (required)"
+                placeholder="Item (required)"
                 value={formObject.title}
               />
               <Input
@@ -117,7 +117,7 @@ function Budgets({user}) {
                   <Input
                 onChange={handleInputChange}
                 name="expires"
-                placeholder="expires (Optional)"
+                placeholder="date bought (Optional)"
                 value={formObject.expires}
               />
                   <Input
@@ -130,7 +130,7 @@ function Budgets({user}) {
                 disabled={!(formObject.type && formObject.title)}
                 onClick={handleFormSubmit}
               >
-                Submit Book
+                Submit Item
               </FormBtn>
             </form>
           </Col>
@@ -145,7 +145,7 @@ function Budgets({user}) {
                     <ListItem key={budget._id}>
                       <a href={"/budgets/" + budget._id}>
                         <strong>
-                          Title: {budget.title} || Quantity: {budget.quantity} || Expires: {budget.expires} || Buy by: {formatDate(budget.date)} Cost: {budget.cost} || Type {budget.type}
+                          Item: {budget.title} || Quantity: {budget.quantity} || Expires: {budget.expires} || Bought on: {formatDate(budget.date)} Cost: {budget.cost} || Type {budget.type}
                         </strong>
                       </a>
                       <DeleteBtn onClick={() => deleteBudget(budget._id)} />
