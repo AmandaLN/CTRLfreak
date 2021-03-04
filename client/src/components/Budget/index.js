@@ -96,7 +96,7 @@ import { Input, TextArea, FormBtn } from "../Form";
               <Input
                 onChange={handleInputChange}
                 name="title"
-                placeholder="Title (required)"
+                placeholder="Item (required)"
                 value={formObject.title}
               />
               <Input
@@ -114,7 +114,7 @@ import { Input, TextArea, FormBtn } from "../Form";
                   <Input
                 onChange={handleInputChange}
                 name="expires"
-                placeholder="expires (Optional)"
+                placeholder="date bought (Optional)"
                 value={formObject.expires}
               />
                   <Input
@@ -127,7 +127,7 @@ import { Input, TextArea, FormBtn } from "../Form";
                 disabled={!(formObject.type && formObject.title)}
                 onClick={handleFormSubmit}
               >
-                Submit Book
+                Submit Item
               </FormBtn>
             </form>
           </Col>
