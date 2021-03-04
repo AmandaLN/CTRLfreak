@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import Logo from "./components/logo";
-=======
+
 import React from 'react'
 import {
 	BrowserRouter as Router,
