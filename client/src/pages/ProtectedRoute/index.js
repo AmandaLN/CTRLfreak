@@ -20,9 +20,9 @@ function ProtectedRoute() {
 				return res.json(res)
 
 			})
-			.then(data => {
+			.then(async data => {
 				console.log(data);
-				dispatch({
+				await dispatch({
 					type: "GET_USER",
 					payload: data
 				})
