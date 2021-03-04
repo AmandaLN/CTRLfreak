@@ -1,32 +1,29 @@
 import React, { useEffect, useState } from "react";
-import Jumbotron from "../components/Jumbotron";
-import DeleteBtn from "../components/DeleteBtn";
-import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
-let userActive
+import Jumbotron from "../Jumbotron";
+import DeleteBtn from "../DeleteBtn";
+import API from "../../utils/API";
+import { Col, Row, Container } from "../Grid";
+import { List, ListItem } from "../List";
+import { Input, TextArea, FormBtn } from "../Form";
 
-function Budgets({user}) {
+
+ function Budgets({userId, user}) {
   // Setting our component's initial state
   console.log(user)
-  userActive = user
+  console.log(userId, "id")
   const [budgets, setBudgets] = useState([])
   const [formObject, setFormObject] = useState({
     title: "",
     type: "",
     quantity: "",
-    user: userActive,
     expires: "",
     cost: "",
     date: Date.now(),
   })
-  // setFormObject({...formObject, "user": {user}})
-  console.log(formObject.cost);
-
+  
   // Load all books and store them with setBooks
-  useEffect(() => {
-    loadBudget()
+   useEffect((userId) => {
+     loadBudget(userId)
   }, [])
 
   function formatDate(date){
@@ -40,11 +37,12 @@ function Budgets({user}) {
 }
 
   // Loads all books and sets them to books
-  function loadBudget() {
-    API.getBudgets()
+  function loadBudget(userId) {
+    console.log(userId)
+    API.getBudget(userId)
       .then(res => {
+        console.log(res.data)
         setBudgets(res.data)
-        console.log(res)
     }
       )
       .catch(err => console.log(err));
@@ -72,7 +70,6 @@ function Budgets({user}) {
         title: formObject.title,
         type: formObject.type,
         quantity: formObject.quantity,
-        user: userActive,
         expires: formObject.expires,
         cost : formObject.cost,
       })
@@ -145,7 +142,7 @@ function Budgets({user}) {
                     <ListItem key={budget._id}>
                       <a href={"/budgets/" + budget._id}>
                         <strong>
-                          Title: {budget.title} || Quantity: {budget.quantity} || Expires: {budget.expires} || Buy by: {formatDate(budget.date)} Cost: {budget.cost} || Type {budget.type}
+                          Title: {budget.title} || Quantity: {budget.quantity} || Expires: {budget.expires} || Buy by: {budget.date} Cost: {budget.cost} || Type {budget.type}
                         </strong>
                       </a>
                       <DeleteBtn onClick={() => deleteBudget(budget._id)} />

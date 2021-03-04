@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import Auth from "./utils/Auth";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { Container } from "./components/Grid";
@@ -30,6 +31,7 @@ function App() {
 						{/* <Route component={NoMatch} /> */}
 					</Switch>
 				</Container>
+				<Footer />
 			</div>
 
 		</Router>

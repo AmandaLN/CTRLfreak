@@ -15,7 +15,6 @@ function PublicRoute() {
                     <h6>Caco e Maco</h6>
                 </div>
                 <div className="col-sm">
-
                 </div>
             </div>
         </div>
