@@ -16,24 +16,10 @@
   -o-transition-duration: 0.5s;
 }
 
-/*
- Multicoloured Hover Variations
-*/
 
-#social-fb:hover {
-  color: #3B5998;
-}
-.social-tw:hover {
-  color: #4099FF;
-}
-#social-ig:hover {
-  color: #d34836;
-}
-#social-em:hover {
-  color: #f39c12;
-}
 
 footer {
+
 position: fixed;
 margin: 0;
 bottom: 0;
