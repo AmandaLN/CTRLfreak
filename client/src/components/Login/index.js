@@ -4,7 +4,7 @@ import Auth from "../../utils/Auth";
 import { useLocation, useHistory } from "react-router";
 //Uses the Auth methods to actually login with the LoginForm Component.
 
-function Login() {
+ function Login() {
 	let location = useLocation();
 	let history = useHistory();
 	const [redirectToReferrer, setRedirectToReferrer] = useState(false);

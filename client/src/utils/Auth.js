@@ -5,13 +5,13 @@
 
 const Auth = {
 	isAuthenticated: false,
-	authenticate(cb) {
+	 authenticate(cb) {
 		// req.user on backend will contain user info if
 		// this person has credentials that are valid
-		fetch('api/users/user', {
+		 fetch('api/users/user', {
 			credentials: 'include'
 		})
-			.then((res) => {
+			.then(async (res) => {
 				console.log(`response to authenticate ${res}`);
 
 				//added this for the response code check on deployment

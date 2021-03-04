@@ -18,5 +18,8 @@ export default {
   // Saves a book to the database
   saveBudget: function(budgetData) {
     return axios.post("/api/budget", budgetData);
+  },
+  updateBudget: function(id, budgetData) {
+    return axios.put("/api/budget/" + id, budgetData);
   }
 };
