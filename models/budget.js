@@ -14,7 +14,6 @@ const budgetSchema = new Schema({
         type: String,
         trim: true,
         required: "Type of expense is required",
-        
       },
       quantity: {
         type: Number,

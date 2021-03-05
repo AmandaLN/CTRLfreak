@@ -19,12 +19,16 @@ import { Input, TextArea, FormBtn } from "../Form";
     quantity: "",
     expires: "",
     cost: "",
-    date: Date.now(),
   })
   
   // Load all books and store them with setBooks
-   useEffect((userId) => {
-     loadBudget(userId)
+   useEffect(() => {
+    //  console.log("useEffect")
+    //  API.getId(user).then( res => {
+    //    console.log(res, "the one");
+      loadBudget()
+    //  }
+    //  )
   }, [])
 
   function formatDate(date){
@@ -38,21 +42,19 @@ import { Input, TextArea, FormBtn } from "../Form";
 }
 
   // Loads all books and sets them to books
- function loadBudget(userId) {
+ function loadBudget() {
     console.log(userId, "budget userid")
-    API.getBudget(userId)
+    API.getBudgets()
       .then(res => {
-        console.log(res.data)
-        setBudgets(res.data)
-    }
-      )
+        console.log(res, "yes")
+        setBudgets(res.data[0].expenses)
+    })
       .catch(err => console.log(err));
   };
-
   // Deletes a book from the database with a given id, then reloads books from the db
   function deleteBudget(id) {
     API.deleteBudget(id)
-      .then(res => loadBudget())
+      .then(res => loadBudget(user))
       .catch(err => console.log(err));
   }
 
@@ -67,7 +69,7 @@ import { Input, TextArea, FormBtn } from "../Form";
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.title && formObject.type) {
-      API.updateBudget(userId, {
+      API.updateBudget(user, {
         title: formObject.title,
         type: formObject.type,
         quantity: formObject.quantity,
@@ -81,7 +83,7 @@ import { Input, TextArea, FormBtn } from "../Form";
         expires: "",
         cost : "",
         }))
-        .then(() => loadBudget())
+        .then(() => loadBudget(user))
         .catch(err => console.log(err));
     }
   };
@@ -143,7 +145,7 @@ import { Input, TextArea, FormBtn } from "../Form";
                     <ListItem key={budget._id}>
                       <a href={"/budgets/" + budget._id}>
                         <strong>
-                          Title: {budget.title} || Quantity: {budget.quantity} || Expires: {budget.expires} || Buy by: {budget.date} Cost: {budget.cost} || Type {budget.type}
+                        title : {budget.title} type: {budget.type} cost: {budget.cost} expires: {formatDate(budget.expires)}
                         </strong>
                       </a>
                       <DeleteBtn onClick={() => deleteBudget(budget._id)} />
