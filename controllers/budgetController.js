@@ -4,18 +4,19 @@ const db = require("../models");
 module.exports = {
   findAll: function(req, res) {
     db.Budget
-      .find({user: "rafa"})
-      // .addFields({ 
-      //   totalExpenses: { $sum: "$expenses.cost" }
-      //    })
+      .find()
+
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findExpense: function(req, res) {
-    console.log(req.params.id)
+    console.log(req.params.user)
     db.Budget
-      .find({user: req.params.id})
+      .aggregate({user: req.params.id})
+      .addFields({ 
+       totalExpenses: { $sum: "$expenses.cost" }
+        })
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
