@@ -65,9 +65,9 @@ import { Input, TextArea, FormBtn } from "../Form";
  function loadBudget(user) {
 
     console.log(user, "budget user")
-    API.getBudget(user)
+    API.getId(user)
       .then(res => {
-        console.log(res.data, "yes")
+        console.log(res.data[0].totalExpenses, "total expenses")
         setBudgets(res.data[0].expenses)
     })
       .catch(err => console.log(err));
@@ -173,6 +173,7 @@ import { Input, TextArea, FormBtn } from "../Form";
                     </ListItem>
                   );
                 })}
+                Total Cost: {budgets.totalExpenses}
               </List>
             ) : (
               <h3>No Results to Display</h3>
