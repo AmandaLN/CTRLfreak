@@ -84,6 +84,7 @@ import Logo from "../logo";
 // import Login from "../LoginForm";
 import AuthButton from "../AuthButton";
 import { UserContext } from "../../utils/UserContext";
+
 import {
   NavbarToggler
 } from "reactstrap";
@@ -109,7 +110,9 @@ function Nav() {
   };
 
   const toggleNav = () => {
+    
     setOpen(!open);
+    
   };
 
   useEffect(() => {
@@ -128,14 +131,15 @@ function Nav() {
        <Logo />
         </Link>
         <NavbarToggler onClick={toggleNav} />
+
       <div className={`${open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
         {user.username ? <span className="userText text-white ml-3 pt-1" to="#">Hi {user.username} !</span> : ""}
         <ul className="navbar-nav ml-auto">
           <li className="nav-item ">
-            <Link style={buttonStyle} className=" btn btn-secondary" to="/public">About Us</Link>
-            <Link style={buttonStyle} className="btn btn-danger" to="/protected">Budget</Link>
+            <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to="/public">About Us</Link>
+            <Link style={buttonStyle} className="btn btn-light font-weight-bold" to="/protected">Budget</Link>
             {user.username ? "" :
-              <Link style={buttonStyle} className="btn btn-warning" to="/register">Register a New User</Link>
+              <Link style={buttonStyle} className="btn btn-light font-weight-bold" to="/register">Register a New User</Link>
             }
             <AuthButton />
           </li>
