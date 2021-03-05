@@ -4,7 +4,7 @@ const db = require("../models");
 module.exports = {
   findAll: function(req, res) {
     db.Budget
-      .find({user: "juan"})
+      .find({user: "rafa"})
       // .addFields({ 
       //   totalExpenses: { $sum: "$expenses.cost" }
       //    })
@@ -12,17 +12,18 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findThat: function(req, res) {
-    console.log("hahaha")
+  findExpense: function(req, res) {
+    console.log(req.params.id)
     db.Budget
-      .find({user: "rafa"})
+      .find({user: req.params.id})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
+    console.log(req.params.id, "budgetcontroller")
     db.Budget
-      .findById(req.params.id)
+      .find({user: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

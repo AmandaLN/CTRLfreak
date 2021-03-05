@@ -7,11 +7,10 @@ import { List, ListItem } from "../List";
 import { Input, TextArea, FormBtn } from "../Form";
 
 
- function Budgets({userId, user}) {
+ function Budgets() {
   // Setting our component's initial state
- 
-  console.log(user, "username budget index")
-  console.log(userId, "id budget index")
+  let activeUser
+
   const [budgets, setBudgets] = useState([])
   const [formObject, setFormObject] = useState({
     title: "",
@@ -26,9 +25,30 @@ import { Input, TextArea, FormBtn } from "../Form";
     //  console.log("useEffect")
     //  API.getId(user).then( res => {
     //    console.log(res, "the one");
-      loadBudget()
+ 
     //  }
     //  )
+    fetch('api/users/user', {
+			credentials: 'include'
+			})
+			.then((res) => {
+				console.log(`response to authenticate ${res}`);
+				console.log(res, "yesyes")
+				return res.json(res)
+			})
+			.then(  data => {
+				console.log(data, "protected route index");
+	      console.log(data.username, "testing budget username")
+        activeUser = data.username
+        loadBudget(data.username)
+
+			})
+			.catch((err) => {
+				console.log('Error fetching authorized user.');
+			});
+
+
+
   }, [])
 
   function formatDate(date){
@@ -42,11 +62,12 @@ import { Input, TextArea, FormBtn } from "../Form";
 }
 
   // Loads all books and sets them to books
- function loadBudget() {
-    console.log(userId, "budget userid")
-    API.getBudgets()
+ function loadBudget(user) {
+
+    console.log(user, "budget user")
+    API.getBudget(user)
       .then(res => {
-        console.log(res, "yes")
+        console.log(res.data, "yes")
         setBudgets(res.data[0].expenses)
     })
       .catch(err => console.log(err));
@@ -69,7 +90,7 @@ import { Input, TextArea, FormBtn } from "../Form";
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.title && formObject.type) {
-      API.updateBudget(user, {
+      API.updateBudget(activeUser, {
         title: formObject.title,
         type: formObject.type,
         quantity: formObject.quantity,
@@ -83,7 +104,7 @@ import { Input, TextArea, FormBtn } from "../Form";
         expires: "",
         cost : "",
         }))
-        .then(() => loadBudget(user))
+        .then(() => loadBudget(activeUser))
         .catch(err => console.log(err));
     }
   };

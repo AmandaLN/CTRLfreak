@@ -19,9 +19,9 @@ function ProtectedRoute() {
 				console.log(res, "yesyes")
 				return res.json(res)
 			})
-			.then( data => {
+			.then(  data => {
 				console.log(data, "protected route index");
-				  dispatch({
+				   dispatch({
 					type: "GET_USER",
 					payload: data
 				})
@@ -36,7 +36,7 @@ function ProtectedRoute() {
 
 	return (
 		<>
-		<Budgets userId ={user.id} user={user.username}/>
+		<Budgets />
 		</>
 	)
 

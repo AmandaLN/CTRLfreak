@@ -18,8 +18,9 @@ export default {
   saveBudget: function(budgetData) {
     return axios.post("/api/budget", budgetData);
   },
-  getId: function(id) {
-    return axios.get("/api/budget/" + id);
+  getId: function(user) {
+    console.log(user);
+    return axios.get("/api/budget/" + user);
   },
   updateBudget: function(id, budgetData) {
     console.log(id, budgetData, "updatebudget" )
