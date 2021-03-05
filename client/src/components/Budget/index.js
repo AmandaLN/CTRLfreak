@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Jumbotron from "../Jumbotron";
 
 import DeleteBtn from "../DeleteBtn";
+import Reports from "../Reports";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
@@ -30,7 +31,6 @@ let expensesTotal = 0;
     //  console.log("useEffect")
     //  API.getId(user).then( res => {
     //    console.log(res, "the one");
- 
     //  }
     //  )
     fetch('api/users/user', {
@@ -194,6 +194,7 @@ let expensesTotal = 0;
             ) : (
               <h3>No Results to Display</h3>
             )}
+            <Reports budgets={budgets}/>
           </Col>
         </Row>
       </Container>

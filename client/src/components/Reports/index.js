@@ -1,11 +1,23 @@
 import React from 'react'
 import { Bar } from "react-chartjs-2";
-import { Col, Row } from '../../components/Grid';
-
+import { Col, Row } from '../Grid';
+import Jumbotron from "../Jumbotron";
+import { List, ListItem } from "../List";
 
 /* This is a very simple component.. it probably doesn't need to be a smart component at this point but you never know what's goingto happen in the future */
 
-function PublicRoute() {
+function Reports({budgets}) {
+    console.log(budgets, "budgets budgets")
+    function formatDate(date){
+        const dateArray = date.split("-");
+        const year = dateArray[0];
+        const month = dateArray[1];
+        const dayArray = dateArray[2].split("T");
+        const day = dayArray[0];
+        const formattedDate = [month, day, year].join("-");
+        return formattedDate
+    }
+
 
     return (
 
@@ -21,8 +33,6 @@ function PublicRoute() {
                 <Col size="md-12">
                     <h3 className="text-right">Monthly Breakdown</h3>
                 </Col>
-
-
 
                 {/* Here goes a styled breakline */}
                 <hr />
@@ -50,11 +60,11 @@ function PublicRoute() {
                     <Bar
                         data={{
 
-                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            labels: ['Groceries', 'Utilities', 'Subscription', 'Total'],
                             datasets: [
                                 {
-                                    label: '#of Votes',
-                                    data: [12, 19, 3, 5, 2, 3],
+                                    label: 'Budget',
+                                    data: [5,8,10,20],
                                     backgroundColor: [
                                         'rgba(255, 99, 132, 0.2)',
                                         'rgba(54, 162, 235, 0.2)',
@@ -81,29 +91,27 @@ function PublicRoute() {
                 </Col>
 
                 <Col size="md-12">
-                    <table class="table table-striped">
+                
 
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                        </tbody>
-                    </table>
+     
+                {budgets.length ? (
+              <List>
+                {budgets.map(budget => {
+                  return (
+                    <ListItem key={budget._id}>
+                      
+                        <strong>
+                        title : {budget.title} type: {budget.type} cost: {budget.cost} expires: {formatDate(budget.expires)}
+                        </strong>
+                  
+                     </ListItem>
+                  );
+                })}
+                
+              </List>
+            ) : (
+              <h3>No Results to Display</h3>
+            )}
                 </Col>
             </Row>
         </div>
@@ -115,4 +123,4 @@ function PublicRoute() {
 }
 
 
-export default PublicRoute
+export default Reports
