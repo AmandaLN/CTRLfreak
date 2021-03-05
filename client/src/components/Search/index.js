@@ -9,3 +9,4 @@ const Search = () => {
 export default Search;
 
 // .navbar-expand-xl
+{/* <i class="fas fa-search"/> */}
