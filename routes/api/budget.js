@@ -10,8 +10,13 @@ router.route("/")
 router
   .route("/:id")
   .get(budgetController.findById)
-  .get(budgetController.findExpense)
   .put(budgetController.update)
   .delete(budgetController.remove);
+ 
+
+  router
+  .route("/test/:user")
+  .get(budgetController.findExpense)
+  .put(budgetController.remove);
 
 module.exports = router;

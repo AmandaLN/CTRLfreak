@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Jumbotron from "../Jumbotron";
+
 import DeleteBtn from "../DeleteBtn";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import { Input, TextArea, FormBtn } from "../Form";
 let activeUser
+let deleteUser = {
+    user: ""
+}
+let expensesTotal = 0;
 
  function Budgets() {
   // Setting our component's initial state
@@ -38,6 +43,7 @@ let activeUser
 			})
 			.then(  data => {
         activeUser = data.username
+        deleteUser.user = data.username
         console.log(data, "protected route index");
 	      console.log(activeUser, "testing budget username")
         loadBudget(data.username)
@@ -66,14 +72,24 @@ let activeUser
     console.log(user, "budget user")
     API.getId(user)
       .then(res => {
-        console.log(res.data[0], "checking")
-        setBudgets(res.data[0].expenses)
+        console.log(res.data, "checking")
+        if (res) {
+          expensesTotal = res.data[0].totalExpenses
+          console.log(expensesTotal, "totalexpenses")
+          setBudgets(res.data[0].expenses)
+          } else {
+              console.log("no workout")
+             
+          }
+
+ 
     })
       .catch(err => console.log(err));
   };
   // Deletes a book from the database with a given id, then reloads books from the db
   function deleteBudget(id) {
-    API.deleteBudget(id)
+    console.log(id, deleteUser, "papapa")
+    API.deleteBudget(id, deleteUser)
       .then(res => loadBudget(activeUser))
       .catch(err => console.log(err));
   }
@@ -173,7 +189,7 @@ let activeUser
                     </ListItem>
                   );
                 })}
-                Total Cost: {budgets.totalExpenses}
+                Total Cost: {expensesTotal}
               </List>
             ) : (
               <h3>No Results to Display</h3>

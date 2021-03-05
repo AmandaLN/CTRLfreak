@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 3001;
 
 // Define middleware here
 app.use(logger('dev'));
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
