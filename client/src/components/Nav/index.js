@@ -84,7 +84,11 @@ import Logo from "../logo";
 // import Login from "../LoginForm";
 import AuthButton from "../AuthButton";
 import { UserContext } from "../../utils/UserContext";
-import { NavbarToggler } from "reactstrap";
+
+import {
+  NavbarToggler
+} from "reactstrap";
+
 //I want to add some basic inline styling here, even though we are bringing in styles
 const buttonStyle = {
   marginRight: 10
@@ -102,6 +106,7 @@ function Nav() {
       setOpen(false);
     }
     setWidth(window.innerWidth)
+    // toggleNav()
   };
 
   const toggleNav = () => {
@@ -125,7 +130,8 @@ function Nav() {
       <Link className="navbar-brand" to="/">
        <Logo />
         </Link>
-        <NavbarToggler onCLick={toggleNav} />
+        <NavbarToggler onClick={toggleNav} />
+
       <div className={`${open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
         {user.username ? <span className="userText text-white ml-3 pt-1" to="#">Hi {user.username} !</span> : ""}
         <ul className="navbar-nav ml-auto">
