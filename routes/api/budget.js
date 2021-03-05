@@ -10,6 +10,7 @@ router.route("/")
 router
   .route("/:id")
   .get(budgetController.findById)
+  .get(budgetController.findThat)
   .put(budgetController.update)
   .delete(budgetController.remove);
 
