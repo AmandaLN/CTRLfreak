@@ -5,7 +5,7 @@ import Col from "../Col";
 
 function Footer() {
   return (
-    <footer className="footer-dark bg-dark bg-info text-light">
+    <footer className="footer-dark bg-dark bg-info text-light fixed-bottom">
 
       <div className="d-flex align-items-center">
         <Col size="md-2">Amanda
