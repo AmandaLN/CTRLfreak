@@ -5,11 +5,11 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import { Input, TextArea, FormBtn } from "../Form";
-
+let activeUser
 
  function Budgets() {
   // Setting our component's initial state
-  let activeUser
+ 
 
   const [budgets, setBudgets] = useState([])
   const [formObject, setFormObject] = useState({
@@ -37,9 +37,9 @@ import { Input, TextArea, FormBtn } from "../Form";
 				return res.json(res)
 			})
 			.then(  data => {
-				console.log(data, "protected route index");
-	      console.log(data.username, "testing budget username")
         activeUser = data.username
+        console.log(data, "protected route index");
+	      console.log(activeUser, "testing budget username")
         loadBudget(data.username)
 
 			})
@@ -63,11 +63,10 @@ import { Input, TextArea, FormBtn } from "../Form";
 
   // Loads all books and sets them to books
  function loadBudget(user) {
-
     console.log(user, "budget user")
     API.getId(user)
       .then(res => {
-        console.log(res.data[0].totalExpenses, "total expenses")
+        console.log(res.data[0], "checking")
         setBudgets(res.data[0].expenses)
     })
       .catch(err => console.log(err));
@@ -75,7 +74,7 @@ import { Input, TextArea, FormBtn } from "../Form";
   // Deletes a book from the database with a given id, then reloads books from the db
   function deleteBudget(id) {
     API.deleteBudget(id)
-      .then(res => loadBudget(user))
+      .then(res => loadBudget(activeUser))
       .catch(err => console.log(err));
   }
 
@@ -89,6 +88,7 @@ import { Input, TextArea, FormBtn } from "../Form";
   // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
+ 
     if (formObject.title && formObject.type) {
       API.updateBudget(activeUser, {
         title: formObject.title,

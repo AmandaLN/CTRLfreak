@@ -13,7 +13,7 @@ module.exports = {
   findExpense: function(req, res) {
     console.log(req.params.user)
     db.Budget
-      .aggregate({user: req.params.id})
+      .aggregate({user: req.params.user})
       .addFields({ 
        totalExpenses: { $sum: "$expenses.cost" }
         })

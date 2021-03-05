@@ -19,7 +19,7 @@ export default {
     return axios.post("/api/budget", budgetData);
   },
   getId: function(user) {
-    console.log(user);
+    console.log(user, "getId");
     return axios.get("/api/budget/" + user);
   },
   updateBudget: function(id, budgetData) {
