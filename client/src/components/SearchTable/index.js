@@ -1,3 +1,5 @@
+import React from "react";
+
 const SearchTable = () => {
 	return (
 		<div className="container text-center">
@@ -13,67 +15,67 @@ const SearchTable = () => {
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row" className="text-success"><i class="far fa-edit"/></th>
+						<th scope="row" className="text-success"><i className="far fa-edit"/></th>
 						<td>Brown Egg</td>
 						<td>12</td>
 						<td>10/10/2021</td>
-						<td className="text-danger"><i class="far fa-trash-alt"/></td>
+						<td className="text-danger"><i className="far fa-trash-alt"/></td>
 					</tr>
 					<tr>
-						<th scope="row"><i class="far fa-edit"/></th>
+						<th scope="row"><i className="far fa-edit"/></th>
+						<td>Brown Egg</td>
+						<td>12</td>
+						<td>10/10/2021</td>
+						<td><i className="far fa-trash-alt"/></td>
+					</tr>
+					<tr>
+						<th scope="row"><i className="far fa-edit"/></th>
+						<td>Brown Egg</td>
+						<td>12</td>
+						<td>10/10/2021</td>
+						<td><i className="far fa-trash-alt"/></td>
+					</tr>
+					<tr>
+						<th scope="row"><i className="far fa-edit"/></th>
+						<td>Brown Egg</td>
+						<td>12</td>
+						<td>10/10/2021</td>
+						<td><i className="far fa-trash-alt"/></td>
+					</tr>
+					<tr>
+						<th scope="row"><i className="far fa-edit"/></th>
+						<td>Brown Egg</td>
+						<td>12</td>
+						<td>10/10/2021</td>
+						<td><i className="far fa-trash-alt"/></td>
+					</tr>
+					<tr>
+						<th scope="row"><i className="far fa-edit"/></th>
 						<td>Brown Egg</td>
 						<td>12</td>
 						<td>10/10/2021</td>
 						<td><i class="far fa-trash-alt"/></td>
 					</tr>
 					<tr>
-						<th scope="row"><i class="far fa-edit"/></th>
+						<th scope="row"><i className="far fa-edit"/></th>
 						<td>Brown Egg</td>
 						<td>12</td>
 						<td>10/10/2021</td>
-						<td><i class="far fa-trash-alt"/></td>
+						<td><i className="far fa-trash-alt"/></td>
 					</tr>
 					<tr>
-						<th scope="row"><i class="far fa-edit"/></th>
+						<th scope="row"><i className="far fa-edit"/></th>
 						<td>Brown Egg</td>
 						<td>12</td>
 						<td>10/10/2021</td>
-						<td><i class="far fa-trash-alt"/></td>
+						<td><i className="far fa-trash-alt"/></td>
 					</tr>
 					<tr>
-						<th scope="row"><i class="far fa-edit"/></th>
+						<th scope="row"><i className="far fa-edit"/></th>
 						<td>Brown Egg</td>
 						<td>12</td>
 						<td>10/10/2021</td>
-						<td><i class="far fa-trash-alt"/></td>
-					</tr>
-					<tr>
-						<th scope="row"><i class="far fa-edit"/></th>
-						<td>Brown Egg</td>
-						<td>12</td>
-						<td>10/10/2021</td>
-						<td><i class="far fa-trash-alt"/></td>
-					</tr>
-					<tr>
-						<th scope="row"><i class="far fa-edit"/></th>
-						<td>Brown Egg</td>
-						<td>12</td>
-						<td>10/10/2021</td>
-						<td><i class="far fa-trash-alt"/></td>
-					</tr>
-					<tr>
-						<th scope="row"><i class="far fa-edit"/></th>
-						<td>Brown Egg</td>
-						<td>12</td>
-						<td>10/10/2021</td>
-						<td><i class="far fa-trash-alt"/></td>
-					</tr>
-					<tr>
-						<th scope="row"><i class="far fa-edit"/></th>
-						<td>Brown Egg</td>
-						<td>12</td>
-						<td>10/10/2021</td>
-						<td><i class="far fa-trash-alt"/></td>
+						<td><i className="far fa-trash-alt"/></td>
 					</tr>
 				</tbody>
 			</table>
