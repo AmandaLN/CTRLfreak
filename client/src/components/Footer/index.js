@@ -31,8 +31,8 @@ function Footer() {
         </Col>
 
         <Col size="md-4 text-primary">
-          <h7>The 4 Budgeteers</h7>
-          <h7>©Copyright 2021</h7>
+          <h6>The 4 Budgeteers</h6>
+          <h6>©Copyright 2021</h6>
         </Col>
         <Col size="md-2">Alejandro
           <a href="https://github.com/CastroAlejandro"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-github" viewBox="0 0 16 16">
