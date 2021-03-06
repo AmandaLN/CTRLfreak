@@ -15,7 +15,6 @@ let expensesTotal = 0;
 
  function Budgets() {
   // Setting our component's initial state
- 
 
   const [budgets, setBudgets] = useState([])
   const [formObject, setFormObject] = useState({
