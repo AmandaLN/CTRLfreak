@@ -1,23 +1,13 @@
 import React from 'react'
-import { Bar } from "react-chartjs-2";
-import { Col, Row } from '../Grid';
-import Jumbotron from "../Jumbotron";
-import { List, ListItem } from "../List";
+import { Bar, Doughnut, defaults } from "react-chartjs-2";
+import { Col, Row } from '../../components/Grid';
+import HR from '../HR/HR';
+
+defaults.global.legend.position = 'bottom'
 
 /* This is a very simple component.. it probably doesn't need to be a smart component at this point but you never know what's goingto happen in the future */
 
-function Reports({budgets}) {
-    console.log(budgets, "budgets budgets")
-    function formatDate(date){
-        const dateArray = date.split("-");
-        const year = dateArray[0];
-        const month = dateArray[1];
-        const dayArray = dateArray[2].split("T");
-        const day = dayArray[0];
-        const formattedDate = [month, day, year].join("-");
-        return formattedDate
-    }
-
+function PublicRoute() {
 
     return (
 
@@ -28,43 +18,129 @@ function Reports({budgets}) {
                     <h1 className="text-center">Reports</h1>
                 </Col>
 
-                <hr />
+                <Col size="md-12">
+                    <h3 className="text-right ">Monthly Breakdown</h3>
+					<HR/>
+                </Col>
+
+
+{/* Dougnuts Column need to be a bit higher */}
+                <Col size="md-4">
+
+				<Doughnut
+                        data={{
+
+                            labels: ['Gas', 'Electric', 'Water', 'Internet'],
+                            datasets: [
+                                {
+                                    label: '#of Votes',
+                                    data: [12, 19, 3, 5],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                }
+                            ]
+                        }}
+                        height={300}
+                        width={250}
+                        options={{
+                            maintainAspectRatio: false,
+							legend:{
+
+							}
+
+                        }}
+                    />
+					
+                </Col>
+
+                <Col size="md-4">
+
+				<Doughnut
+                        data={{
+
+                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            datasets: [
+                                {
+                                    label: '#of Votes',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                }
+                            ]
+                        }}
+                        height={300}
+                        width={250}
+                        options={{
+                            maintainAspectRatio: false,
+							legend:{
+
+							}
+
+                        }}
+                    />
+                </Col>
+
+                <Col size="md-4">
+				<Doughnut
+                        data={{
+
+                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                            datasets: [
+                                {
+                                    label: '#of Votes',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                }
+                            ]
+                        }}
+                        height={300}
+                        width={250}
+                        options={{
+                            maintainAspectRatio: false,
+							legend:{
+
+							}
+
+                        }}
+                    />
+                </Col>
+
 
                 <Col size="md-12">
-                    <h3 className="text-right">Monthly Breakdown</h3>
-                </Col>
-
-                {/* Here goes a styled breakline */}
-                <hr />
-
-                <Col size="md-4">
-                    <img src="https://www.gaithersburgdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.png" alt="placeholder" height="250" width="300" />
-                </Col>
-                <Col size="md-4">
-                    <img src="https://www.gaithersburgdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.png" alt="placeholder" height="250" width="300" />
-                </Col>
-                <Col size="md-4">
-                    <img src="https://www.gaithersburgdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.png" alt="placeholder" height="250" width="300" />
-                </Col>
-
-                {/* Need Breaklines or separation of some sort */}
-
-                <Col size="md-12">
-                    <h3 className="text-right">Chart</h3>
+                    <h3 className="text-right ">Charts</h3>
+					<HR/>
                 </Col>
 
                 {/* Styled hr line */}
 
                 <Col size="md-12">
-
                     <Bar
                         data={{
 
-                            labels: ['Groceries', 'Utilities', 'Subscription', 'Total'],
+                            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
                             datasets: [
                                 {
-                                    label: 'Budget',
-                                    data: [5,8,10,20],
+                                    label: '#of Votes',
+                                    data: [12, 19, 3, 5, 2, 3],
                                     backgroundColor: [
                                         'rgba(255, 99, 132, 0.2)',
                                         'rgba(54, 162, 235, 0.2)',
@@ -87,31 +163,34 @@ function Reports({budgets}) {
 
 
                 <Col size="md-12">
-                    <h3 className="text-right">Most Recent Expenses</h3>
+                    <h3 className="text-right ">Most Recent Expenses</h3>
+					<HR/>
                 </Col>
 
                 <Col size="md-12">
-                
-
-     
-                {budgets.length ? (
-              <List>
-                {budgets.map(budget => {
-                  return (
-                    <ListItem key={budget._id}>
-                      
-                        <strong>
-                        title : {budget.title} type: {budget.type} cost: {budget.cost} expires: {formatDate(budget.expires)}
-                        </strong>
-                  
-                     </ListItem>
-                  );
-                })}
-                
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
+					{/* Table need to be a little bit more up */}
+                    <table class="table table-striped ">
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </Col>
             </Row>
         </div>
@@ -123,4 +202,4 @@ function Reports({budgets}) {
 }
 
 
-export default Reports
+export default PublicRoute
