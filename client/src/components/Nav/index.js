@@ -137,6 +137,7 @@ function Nav() {
         <ul className="navbar-nav ml-auto">
           <li className="nav-item ">
             <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to="/public">About Us</Link>
+            <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to="/reports">Reports</Link>
             <Link style={buttonStyle} className="btn btn-light font-weight-bold" to="/protected">Budget</Link>
             {user.username ? "" :
               <Link style={buttonStyle} className="btn btn-light font-weight-bold" to="/register">Register a New User</Link>
