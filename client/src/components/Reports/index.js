@@ -1,13 +1,24 @@
 import React from 'react'
 import { Bar, Doughnut, defaults } from "react-chartjs-2";
 import { Col, Row } from '../../components/Grid';
-import HR from '../HR/HR';
+import HR from '../HR';
+import { List, ListItem } from "../List";
 
 defaults.global.legend.position = 'bottom'
 
 /* This is a very simple component.. it probably doesn't need to be a smart component at this point but you never know what's goingto happen in the future */
 
-function PublicRoute() {
+function PublicRoute({budgets}) {
+
+    function formatDate(date){
+        const dateArray = date.split("-");
+        const year = dateArray[0];
+        const month = dateArray[1];
+        const dayArray = dateArray[2].split("T");
+        const day = dayArray[0];
+        const formattedDate = [month, day, year].join("-");
+        return formattedDate
+    }
 
     return (
 
@@ -169,28 +180,17 @@ function PublicRoute() {
 
                 <Col size="md-12">
 					{/* Table need to be a little bit more up */}
-                    <table class="table table-striped ">
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    {budgets.map(budget => {
+                    return (
+                    <ListItem key={budget._id}>
+                      <a href={"/budgets/" + budget._id}>
+                        <strong>
+                        title : {budget.title} type: {budget.type} cost: {budget.cost} expires: {formatDate(budget.expires)}
+                        </strong>
+                      </a>
+                    </ListItem>
+                  );
+                })}
                 </Col>
             </Row>
         </div>
