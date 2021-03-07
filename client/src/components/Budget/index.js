@@ -123,31 +123,31 @@ let expensesTotal = 0;
               <Input
                 onChange={handleInputChange}
                 name="title"
-                placeholder="Item (required)"
+                placeholder="Type of Expense (required)"
                 value={formObject.title}
               />
               <Input
                 onChange={handleInputChange}
                 name="type"
-                placeholder="type (required)"
+                placeholder="Type of budget(required)"
                 value={formObject.type}
               />
               <Input
                 onChange={handleInputChange}
                 name="quantity"
-                placeholder="quantity (Optional)"
+                placeholder="Quantity (Optional)"
                 value={formObject.quantity}
               />
                   <Input
                 onChange={handleInputChange}
                 name="expires"
-                placeholder="date bought (Optional)"
+                placeholder="Expire Date or Due Date (required)"
                 value={formObject.expires}
               />
                   <Input
                 onChange={handleInputChange}
                 name="cost"
-                placeholder="cost (Optional)"
+                placeholder="Cost (Optional)"
                 value={formObject.cost}
               />
               <FormBtn
@@ -181,9 +181,10 @@ let expensesTotal = 0;
             ) : (
               <h3>No Results to Display</h3>
             )}
-            <Reports expensesTotal = {expensesTotal} budgets={budgets}/>
+            
           </Col>
         </Row>
+        <Reports expensesTotal = {expensesTotal} budgets={budgets}/>
       </Container>
     );
   }

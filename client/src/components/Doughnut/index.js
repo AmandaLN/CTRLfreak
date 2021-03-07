@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import { Col } from "../Grid";
 
 
-function DoughnutChart ({labels1, data1, background1, border1, total}) {
-    console.log(data1[0], total)
+function DoughnutChart ({labels1, data1, background1, border1, totalGroceries}) {
+
+
+
+
     const [dataChart, setDataChart] = useState({
         labels: [labels1],
         datasets: [
           {
-            label: labels1,
-            data: data1,
+            label: [labels1],
+            data: [data1, totalGroceries],
             backgroundColor: background1,
             borderColor: border1
             //   'rgba(255, 99, 132, 1)',
@@ -21,8 +24,11 @@ function DoughnutChart ({labels1, data1, background1, border1, total}) {
             //   'rgba(255, 159, 64, 1)',
             ,
             borderWidth: 1,
+            legend: [data1]
           },
         ],
+        height: 150,
+        witdh: 150,
  
     })
 
@@ -43,7 +49,7 @@ return(
         </a>
       </div>
     </div>
-    <Doughnut data={dataChart} />
+    <Pie data={dataChart} />
     </Col>
   </>
   )

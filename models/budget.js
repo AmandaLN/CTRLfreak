@@ -28,12 +28,19 @@ const budgetSchema = new Schema({
         type: Number,
         default: 1
       },
-      expires: Date,
+      expires: {
+        type: Date,
+        required: "Title is required",
+      },
       cost: {
         type: Number,
+      },
+      createAt: {
+        type: Date,
+        default: Date.now(),
       }
     }],
-    date: {
+    createAt: {
       type: Date,
       default: Date.now(),
     }

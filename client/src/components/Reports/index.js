@@ -54,20 +54,20 @@ const [budgetsbyType, setbudgetsbyType] = useState({});
           res.data.map((type) => {
             console.log(type._id);
             if (type._id === "groceries") {
-                totalGroceries =+ type.totalType;
+                totalGroceries += type.totalType;
                 console.log(totalGroceries)
                 setGroceries(type.totalType);
                 setTotal(setTotal + type.totalType)
            
             }
             if (type._id === "utilities") {
-                totalGroceries =+ type.totalType;
+                totalGroceries += type.totalType;
                 console.log(totalGroceries)
                 setUtilities(type.totalType)
                 setTotal(setTotal + type.totalType)
             };
             if (type._id === "subscription") {
-                totalGroceries =+ type.totalType;
+                totalGroceries += type.totalType;
                 console.log(totalGroceries)
                 setSubscription(type.totalType);
                 setTotal(setTotal + type.totalType)
@@ -117,7 +117,7 @@ const [budgetsbyType, setbudgetsbyType] = useState({});
               datasets: [
                 {
                   label: "Expenses",
-                  data: [budgetsGroceries, budgetsUtilities, budgetsSubscription, budgetsTotal],
+                  data: [budgetsGroceries, budgetsUtilities, budgetsSubscription, expensesTotal],
                   backgroundColor: [
                     "rgba(255, 99, 132, 0.2)",
                     "rgba(54, 162, 235, 0.2)",
@@ -138,12 +138,12 @@ const [budgetsbyType, setbudgetsbyType] = useState({});
         {budgetsbyType.length ? (
               <>
                 {budgetsbyType.map(typeGraph => {
-                percentage = Math.round((typeGraph.totalType / totalGroceries) * 100)
+                percentage = Math.round((typeGraph.totalType / expensesTotal) * 100)
                 if (typeGraph._id === "groceries") back = ["rgba(255, 99, 132, 0.2)"]    
                 if (typeGraph._id === "utilities") back = ["rgba(54, 162, 235, 0.2)"] 
                 if (typeGraph._id === "subscription") back =  ["rgba(255, 206, 86, 0.2)"]
                   return (
-                    <DoughnutChart key={typeGraph._id} total = {totalGroceries} labels1={typeGraph._id} data1={[typeGraph.totalType]} background1={back} border1={back}/>
+                    <DoughnutChart key={typeGraph._id} totalGroceries = {[totalGroceries]} labels1={[typeGraph._id]} data1={[typeGraph.totalType]} background1={back} border1={back}/>
                   );
                 })}
                 </>
