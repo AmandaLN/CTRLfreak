@@ -11,6 +11,18 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  findType: function (req, res) {
+    console.log(req.params.type, "type");
+    console.log(req.body, "tyuserpe");
+    db.Budget.aggregate()
+      .match({user : req.body.user, 'expenses.type' : req.params.type})
+      .addFields({
+        totalExpenses: { $sum: "$expenses.cost" }
+      })
+      .sort({ date: -1 })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
   findExpense: function (req, res) {
     console.log(req.params.user, "dan");
     db.Budget.aggregate()

@@ -1,14 +1,70 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { Bar, Doughnut, defaults } from "react-chartjs-2";
 import { Col, Row } from '../../components/Grid';
 import HR from '../HR';
 import { List, ListItem } from "../List";
+import API from "../../utils/API";
+let totalGroceries = 0;
+
 
 defaults.global.legend.position = 'bottom'
 
 /* This is a very simple component.. it probably doesn't need to be a smart component at this point but you never know what's goingto happen in the future */
 
-function PublicRoute({budgets}) {
+function PublicRoute({budgets, expensesTotal}) {
+
+      
+    const [budgetsGroceries, setBudgetsGroceries] = useState([])
+    const [budgetsUtilities, setBudgetsUtilities] = useState([])
+    const [budgetsSubscription, setBudgetsSubscription] = useState([])
+    
+  
+    // Load all books and store them with setBooks
+     useEffect(() => {
+        console.log("useEffect")
+        fetch('api/users/user', {
+			credentials: 'include'
+			})
+			.then((res) => {
+				console.log(`response to authenticate ${res}`);
+				console.log(res, "yesyes")
+				return res.json(res)
+			})
+			.then(  data => {
+                console.log(data, "checkdata")
+               let userName = {
+                    user: data.username
+                }
+                console.log(userName, "username")
+        API.getExpensesbyType("Groceries", userName)
+        .then(res => {
+            console.log("nada")
+          if (res) {
+            console.log(res.data, "checking  groceries")
+            // totalGroceries = res.data[0].totalExpenses
+            // console.log(expensesTotal, "totalexpenses")
+            // setBudgetsGroceries(res.data[0].expenses)
+            } else {
+                console.log("No Groceries")
+               
+            }
+  
+   
+      })
+        .catch(err => console.log(err));
+
+			})
+			.catch((err) => {
+				console.log('Error fetching authorized user.');
+			});
+ 
+
+ 
+  
+  
+  
+    }, [])
+
 
     function formatDate(date){
         const dateArray = date.split("-");
@@ -19,6 +75,8 @@ function PublicRoute({budgets}) {
         const formattedDate = [month, day, year].join("-");
         return formattedDate
     }
+
+
 
     return (
 
