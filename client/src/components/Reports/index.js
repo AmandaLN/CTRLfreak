@@ -41,9 +41,11 @@ function PublicRoute({budgets, expensesTotal}) {
             console.log("nada")
           if (res) {
             console.log(res.data, "checking  groceries")
-            // totalGroceries = res.data[0].totalExpenses
+            
             // console.log(expensesTotal, "totalexpenses")
             // setBudgetsGroceries(res.data[0].expenses)
+            // setBudgetsUtilities(res.data[0].expenses)
+            // setBudgetsSubscription(res.data[0].expenses)
             } else {
                 console.log("No Groceries")
                

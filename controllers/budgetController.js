@@ -14,12 +14,11 @@ module.exports = {
   findType: function (req, res) {
     console.log(req.params.type, "type");
     console.log(req.body, "tyuserpe");
-    db.Budget.aggregate()
-      .match({user : req.body.user, 'expenses.type' : req.params.type})
-      .addFields({
-        totalExpenses: { $sum: "$expenses.cost" }
-      })
-      .sort({ date: -1 })
+    db.Budget.aggregate([
+      {$match: {user : "rafa"}}, 
+      {$unwind: { path: "$expenses", preserveNullAndEmptyArrays: true}}, 
+      {$group: {_id: "$expenses.type", totalType: {$sum: "$expenses.cost"}}}])
+      .sort({ _id: -1 })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
