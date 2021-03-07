@@ -106,8 +106,8 @@ let expensesTotal = 0;
  
     if (formObject.title && formObject.type) {
       API.updateBudget(activeUser, {
-        title: formObject.title,
-        type: formObject.type,
+        title: formObject.title.toLowerCase(),
+        type: formObject.type.toLowerCase(),
         quantity: formObject.quantity,
         expires: formObject.expires,
         cost : formObject.cost,
