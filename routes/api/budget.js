@@ -6,12 +6,22 @@ router.route("/")
   .get(budgetController.findAll)
   .post(budgetController.create);
 
+  // Matches with "/api/budget/expenses:type"
+
+  router.route("/expenses/:type")
+  .put(budgetController.findType)
+
 // Matches with "/api/budget/:id"
 router
   .route("/:id")
   .get(budgetController.findById)
-  .get(budgetController.findThat)
   .put(budgetController.update)
   .delete(budgetController.remove);
+ 
+
+  router
+  .route("/test/:user")
+  .get(budgetController.findExpense)
+  .put(budgetController.remove);
 
 module.exports = router;

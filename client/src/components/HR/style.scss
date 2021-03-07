@@ -1,0 +1,39 @@
+body {padding: 40px;}
+
+$separator-size: 5px;
+$separator-border-style: solid;
+$separator-border-color: #3E766D ;
+$separator-space-top: 25px;
+$separator-space-bottom: 80px;
+
+.separator {
+  margin-top: $separator-space-top;
+  margin-bottom: $separator-space-bottom;
+  border: 0;
+}
+
+.separator--line {
+  border: 0;
+  border-bottom: $separator-size $separator-border-style $separator-border-color;
+
+  width: 0;
+  animation: separator-width 1s ease-out forwards;
+}
+@keyframes separator-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@mixin dot {
+  $dot-size: 7px;
+  content: "";
+  background-color: $separator-border-color;
+  display: block;
+  height: $dot-size;
+  width: $dot-size;
+  border-radius: 50%;
+}

@@ -17,13 +17,11 @@ const budgetSchema = new Schema({
       },
       quantity: {
         type: Number,
-        required: "Quantity is required",
         default: 1
       },
       expires: Date,
       cost: {
         type: Number,
-        default: 0,
       }
     }],
     date: {

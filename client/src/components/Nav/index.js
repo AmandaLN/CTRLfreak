@@ -84,6 +84,11 @@ import Logo from "../logo";
 // import Login from "../LoginForm";
 import AuthButton from "../AuthButton";
 import { UserContext } from "../../utils/UserContext";
+
+import {
+  NavbarToggler
+} from "reactstrap";
+
 //I want to add some basic inline styling here, even though we are bringing in styles
 const buttonStyle = {
   marginRight: 10
@@ -101,10 +106,13 @@ function Nav() {
       setOpen(false);
     }
     setWidth(window.innerWidth)
+    // toggleNav()
   };
 
   const toggleNav = () => {
+    
     setOpen(!open);
+    
   };
 
   useEffect(() => {
@@ -122,14 +130,17 @@ function Nav() {
       <Link className="navbar-brand" to="/">
        <Logo />
         </Link>
+        <NavbarToggler onClick={toggleNav} />
+
       <div className={`${open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
         {user.username ? <span className="userText text-white ml-3 pt-1" to="#">Hi {user.username} !</span> : ""}
         <ul className="navbar-nav ml-auto">
           <li className="nav-item ">
-            <Link style={buttonStyle} className=" btn btn-secondary" to="/public">About Us</Link>
-            <Link style={buttonStyle} className="btn btn-danger" to="/protected">Budget</Link>
+            <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to="/public">About Us</Link>
+            <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to="/reports">Reports</Link>
+            <Link style={buttonStyle} className="btn btn-light font-weight-bold" to="/protected">Budget</Link>
             {user.username ? "" :
-              <Link style={buttonStyle} className="btn btn-warning" to="/register">Register a New User</Link>
+              <Link style={buttonStyle} className="btn btn-light font-weight-bold" to="/register">Register a New User</Link>
             }
             <AuthButton />
           </li>

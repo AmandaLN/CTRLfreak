@@ -3,6 +3,7 @@ import { UserContext } from "../../utils/UserContext";
 import Budgets from "../../components/Budget"
 
 
+
 /* This is a very simple component.. it probably doesn't need to be a smart component at this point but you never know what's goingto happen in the future */
 
 function ProtectedRoute() {
@@ -19,9 +20,9 @@ function ProtectedRoute() {
 				console.log(res, "yesyes")
 				return res.json(res)
 			})
-			.then( data => {
+			.then(  data => {
 				console.log(data, "protected route index");
-				  dispatch({
+				   dispatch({
 					type: "GET_USER",
 					payload: data
 				})
@@ -36,7 +37,8 @@ function ProtectedRoute() {
 
 	return (
 		<>
-		<Budgets userId ={user.id} user={user.username}/>
+		<Budgets />
+	
 		</>
 	)
 

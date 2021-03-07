@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import Jumbotron from "../Jumbotron";
+
 import DeleteBtn from "../DeleteBtn";
+import Reports from "../Reports";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import { Input, TextArea, FormBtn } from "../Form";
+let activeUser
+let deleteUser = {
+    user: ""
+}
+let expensesTotal = 0;
 
-
- function Budgets({userId, user}) {
+ function Budgets() {
   // Setting our component's initial state
- 
-  console.log(user, "username budget index")
-  console.log(userId, "id budget index")
+
   const [budgets, setBudgets] = useState([])
   const [formObject, setFormObject] = useState({
     title: "",
@@ -26,9 +30,30 @@ import { Input, TextArea, FormBtn } from "../Form";
     //  console.log("useEffect")
     //  API.getId(user).then( res => {
     //    console.log(res, "the one");
-      loadBudget()
     //  }
     //  )
+    fetch('api/users/user', {
+			credentials: 'include'
+			})
+			.then((res) => {
+				console.log(`response to authenticate ${res}`);
+				console.log(res, "yesyes")
+				return res.json(res)
+			})
+			.then(  data => {
+        activeUser = data.username
+        deleteUser.user = data.username
+        console.log(data, "protected route index");
+	      console.log(activeUser, "testing budget username")
+        loadBudget(data.username)
+
+			})
+			.catch((err) => {
+				console.log('Error fetching authorized user.');
+			});
+
+
+
   }, [])
 
   function formatDate(date){
@@ -42,19 +67,29 @@ import { Input, TextArea, FormBtn } from "../Form";
 }
 
   // Loads all books and sets them to books
- function loadBudget() {
-    console.log(userId, "budget userid")
-    API.getBudgets()
+ function loadBudget(user) {
+    console.log(user, "budget user")
+    API.getId(user)
       .then(res => {
-        console.log(res, "yes")
-        setBudgets(res.data[0].expenses)
+        console.log(res.data, "checking")
+        if (res) {
+          expensesTotal = res.data[0].totalExpenses
+          console.log(expensesTotal, "totalexpenses")
+          setBudgets(res.data[0].expenses)
+          } else {
+              console.log("no workout")
+             
+          }
+
+ 
     })
       .catch(err => console.log(err));
   };
   // Deletes a book from the database with a given id, then reloads books from the db
   function deleteBudget(id) {
-    API.deleteBudget(id)
-      .then(res => loadBudget(user))
+    console.log(id, deleteUser, "papapa")
+    API.deleteBudget(id, deleteUser)
+      .then(res => loadBudget(activeUser))
       .catch(err => console.log(err));
   }
 
@@ -68,8 +103,9 @@ import { Input, TextArea, FormBtn } from "../Form";
   // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
+ 
     if (formObject.title && formObject.type) {
-      API.updateBudget(user, {
+      API.updateBudget(activeUser, {
         title: formObject.title,
         type: formObject.type,
         quantity: formObject.quantity,
@@ -83,7 +119,7 @@ import { Input, TextArea, FormBtn } from "../Form";
         expires: "",
         cost : "",
         }))
-        .then(() => loadBudget(user))
+        .then(() => loadBudget(activeUser))
         .catch(err => console.log(err));
     }
   };
@@ -152,10 +188,12 @@ import { Input, TextArea, FormBtn } from "../Form";
                     </ListItem>
                   );
                 })}
+                Total Cost: {expensesTotal}
               </List>
             ) : (
               <h3>No Results to Display</h3>
             )}
+            <Reports expensesTotal = {expensesTotal} budgets={budgets}/>
           </Col>
         </Row>
       </Container>

@@ -1,25 +1,30 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
+  // Gets all budget
   getBudgets: function() {
     return axios.get("/api/budget");
   },
-  // Gets the book with the given id
+  // Gets the budget with the given id
   getBudget: function(id) {
     console.log(id, "getbudget")
     return axios.get("/api/budget/" + id);
   },
-  // Deletes the book with the given id
-  deleteBudget: function(id) {
-    return axios.delete("/api/budget/" + id);
+  getExpensesbyType: function(type, activeUser) {
+    console.log(type, "getbudget by type")
+    return axios.put("/api/budget/expenses/" + type, activeUser);
   },
-  // Saves a book to the database
+  // Deletes the budget with the given id
+  deleteBudget: function(id, deleteUser) {
+    return axios.put("/api/budget/test/" + id, deleteUser);
+  },
+  // Saves a budget to the database
   saveBudget: function(budgetData) {
     return axios.post("/api/budget", budgetData);
   },
-  getId: function(id) {
-    return axios.get("/api/budget/" + id);
+  getId: function(user) {
+    console.log(user, "getId");
+    return axios.get("/api/budget/test/" + user);
   },
   updateBudget: function(id, budgetData) {
     console.log(id, budgetData, "updatebudget" )

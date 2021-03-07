@@ -10,6 +10,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Reports from "./components/Reports";
 import { Container } from "./components/Grid";
 import PublicRoute from "./pages/PublicRoute";
 import ProtectedRoute from "./pages/ProtectedRoute";
@@ -27,11 +28,12 @@ function App() {
 						<Route path="/public" component={PublicRoute} />
 						<Route path="/login" component={Login} />
 						<Route path="/register" component={Register} />
+						<Route path="/reports" component={Reports} />
 						<PrivateRoute path="/protected" component={ProtectedRoute} />
 						{/* <Route component={NoMatch} /> */}
 					</Switch>
 				</Container>
-				
+				{/* <Footer /> */}
 			</div>
 
 		</Router>
