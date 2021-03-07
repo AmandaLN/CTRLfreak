@@ -27,11 +27,7 @@ let expensesTotal = 0;
   
   // Load all books and store them with setBooks
    useEffect(() => {
-    //  console.log("useEffect")
-    //  API.getId(user).then( res => {
-    //    console.log(res, "the one");
-    //  }
-    //  )
+ 
     fetch('api/users/user', {
 			credentials: 'include'
 			})
@@ -46,14 +42,10 @@ let expensesTotal = 0;
         console.log(data, "protected route index");
 	      console.log(activeUser, "testing budget username")
         loadBudget(data.username)
-
 			})
 			.catch((err) => {
 				console.log('Error fetching authorized user.');
 			});
-
-
-
   }, [])
 
   function formatDate(date){
@@ -76,12 +68,10 @@ let expensesTotal = 0;
           expensesTotal = res.data[0].totalExpenses
           console.log(expensesTotal, "totalexpenses")
           setBudgets(res.data[0].expenses)
+         
           } else {
               console.log("no workout")
-             
           }
-
- 
     })
       .catch(err => console.log(err));
   };
@@ -92,13 +82,11 @@ let expensesTotal = 0;
       .then(res => loadBudget(activeUser))
       .catch(err => console.log(err));
   }
-
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({...formObject, [name]: value})
   };
-
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
   function handleFormSubmit(event) {
@@ -106,8 +94,8 @@ let expensesTotal = 0;
  
     if (formObject.title && formObject.type) {
       API.updateBudget(activeUser, {
-        title: formObject.title,
-        type: formObject.type,
+        title: formObject.title.toLowerCase(),
+        type: formObject.type.toLowerCase(),
         quantity: formObject.quantity,
         expires: formObject.expires,
         cost : formObject.cost,
