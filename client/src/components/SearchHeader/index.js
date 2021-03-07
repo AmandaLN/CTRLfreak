@@ -1,3 +1,7 @@
+import AddExpenseModal from "../AddExpenseModal"
+import AddGroceryModal from "../AddGroceryModal"
+
+
 const SearchHeader = () => {
 	return (
 		<div className="container text-center">
@@ -9,7 +13,7 @@ const SearchHeader = () => {
 				<h5 className="">Manage</h5>
 			</div>
 			<div className="col md-4">
-				<h5 className="text-success"><i className="fas fa-plus-circle"></i></h5>
+				<h5 className="text-success"><AddGroceryModal/></h5>
 			</div>
 			</div>
 		</div>
