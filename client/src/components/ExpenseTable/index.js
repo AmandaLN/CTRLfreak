@@ -1,3 +1,5 @@
+import EditExpenseModal from "../EditExpenseModal"
+
 const ExpenseTable = () => {
 	return (
 		<div className="container text-center">
@@ -14,7 +16,7 @@ const ExpenseTable = () => {
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row" className="text-success"><i className="far fa-edit" /></th>
+						<th scope="row" className="text-success"><i className="far fa-edit"  data-toggle="modal" data-target="#editModalCenter"/><EditExpenseModal/></th>
 						<td>Netflix</td>
 						<td>$13.99</td>
 						<td>Monthly</td>
