@@ -6,6 +6,11 @@ router.route("/")
   .get(budgetController.findAll)
   .post(budgetController.create);
 
+  // Matches with "/api/budget/expenses:type"
+
+  router.route("/expenses/:type")
+  .put(budgetController.findType)
+
 // Matches with "/api/budget/:id"
 router
   .route("/:id")

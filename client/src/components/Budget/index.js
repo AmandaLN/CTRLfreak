@@ -193,7 +193,7 @@ let expensesTotal = 0;
             ) : (
               <h3>No Results to Display</h3>
             )}
-            <Reports budgets={budgets}/>
+            <Reports expensesTotal = {expensesTotal} budgets={budgets}/>
           </Col>
         </Row>
       </Container>
