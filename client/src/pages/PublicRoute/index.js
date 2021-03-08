@@ -11,14 +11,12 @@ function PublicRoute() {
 
 	const [expenses, setExpenses] = useState({})
 	const [search, setSearch] = useState({
-
 		result: [{}],
 		filteredTable: [{}],
 		order: "descend"
 	})
 
-	headings = [
-        
+	const headings = [
 		{ name: "Expense" },
 		{ name: "Item"},
       ];
@@ -29,7 +27,7 @@ function PublicRoute() {
 	useEffect(() => {
 		API.getBudgets()
 			.then(res => {
-				console.log(res, "testingtesting")
+				console.log(res.data, "testingtesting")
 				setExpenses(res.data)})
 			.catch(err => console.log(err))
 	}, [])
@@ -37,7 +35,7 @@ function PublicRoute() {
 
 	// filters the table while you are typing in search
 
-	handleSearchChange = (event) => {
+	function handleSearchChange (event) {
 		const filter = event.target.value;
 		const filteredList = this.state.result.filter((item) => {
 			let values = Object.values(item).join("").toLowerCase();
@@ -48,7 +46,7 @@ function PublicRoute() {
 		this.setState({ filteredTable: filteredList });
 	};
 	
-	handleSort = () => {
+	function handleSort() {
 		if (this.state.order === "descend") {
 			this.setState({
 				order: "ascend",
@@ -58,7 +56,7 @@ function PublicRoute() {
 				order: "descend",
 			});
 		}
-		const compareFnc = (a, b) => {
+		function compareFnc (a, b) {
 			if (this.state.order === "ascend") {
 				if (a[heading] === undefined) {
 				  return 1;
@@ -85,8 +83,8 @@ function PublicRoute() {
 		this.setState({ filteredTable: sortedTable });
 	};
 
-
 	return (
+		<>
 		<div className="container">
 			<SearchHeader />
 			<div className="container">
@@ -95,14 +93,12 @@ function PublicRoute() {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                    onChange={e => this.handleSearchChange(e)}
+                    onChange={e => console.log(e)}
                 />
-			</div>
-			<GroceryTable/>
-				<input className="form-control mr-sm-2" type="search" placeholder="Search Inventory" aria-label="Search" />
 			</div>
 			<GroceryTable budgets={expenses}/>
 		</div>
+		</>
 	)
 }
 
