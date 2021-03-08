@@ -4,6 +4,7 @@ import { Col, Row } from "../Grid";
 import HR from "../HR";
 import { List, ListItem } from "../List";
 import API from "../../utils/API";
+import PublicRoute from "../../pages/PublicRoute";
 let totalGroceries = 0;
 let back = {};
 let percentage = [];
@@ -80,7 +81,7 @@ function Reports({ budgets, expensesTotal }) {
               setUtilities(type.totalType);
               setTotal(budgetsTotal + type.totalType);
             }
-            if (type._id === "subscription") {
+            if (type._id === "subscriptions") {
               totalGroceries += type.totalType;
               valueSubscriptions += type.totalType;
 
@@ -103,7 +104,7 @@ function Reports({ budgets, expensesTotal }) {
       "values values values"
     );
     dataBar = {
-      labels: ["Groceries", "Utilities", "Subscription", "Total"],
+      labels: ["Groceries", "Utilities", "Subscriptions", "Total"],
       datasets: [
         {
           label: ["Expenses"],
@@ -238,7 +239,7 @@ function Reports({ budgets, expensesTotal }) {
               );
               if (typeGraph._id === "groceries") back = Pie1;
               if (typeGraph._id === "utilities") back = Pie2;
-              if (typeGraph._id === "subscription") back = Pie3;
+              if (typeGraph._id === "subscriptions") back = Pie3;
               return (
                 <>
                   <Col size="md-4">
@@ -284,6 +285,9 @@ function Reports({ budgets, expensesTotal }) {
             );
           })}
         </Col>
+      </Row>
+      <Row>
+        <PublicRoute />
       </Row>
     </div>
   );

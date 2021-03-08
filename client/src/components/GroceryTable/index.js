@@ -6,7 +6,7 @@ import "./style.css";
 import Moment from 'react-moment'
 
 const GroceryTable = ({budgets}) => {
-
+console.log(budgets, "this is the right none")
 	function formatDate(date){
 		const dateArray = date.split("-");
 		const year = dateArray[0];
@@ -40,10 +40,12 @@ const GroceryTable = ({budgets}) => {
 					hour = ""
 				}
                   return (
-                    <ListItem key={budget._id} className={hour}>
+
+                    <ListItem key={budget._id} className="bg-danger">
+
                       <a href={"/budgets/" + budget._id}>
-                        <strong>
-                        title : {budget.title} type: {budget.type} cost: {budget.cost} expires: {budget.expires}
+                        <strong >
+                        Type : {budget.id} cost: {budget.totalExpenses}
                         </strong>
                       </a>
                       
