@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { defaults } from "react-chartjs-2";
+import { defaults,  Bar, Pie } from "react-chartjs-2";
 import { Col, Row } from "../Grid";
-import PieChart from "../PieChart";
-import BarChart from "../BarChart";
 import HR from "../HR";
 import { List, ListItem } from "../List";
 import API from "../../utils/API";
 let totalGroceries = 0;
-let back = [];
+let back = {};
 let percentage = [];
+let dataBar = {};
+let valueGroceries = 0;
+let valueUtilities = 0;
+let valueSubscriptions = 0;
+
+let Pie1,
+  Pie2,
+  Pie3 = {};
 
 defaults.global.legend.position = "bottom";
 
@@ -20,6 +26,7 @@ function Reports({ budgets, expensesTotal }) {
   const [budgetsUtilities, setUtilities] = useState(0);
   const [budgetsSubscription, setSubscription] = useState(0);
   const [budgetsTotal, setTotal] = useState(0);
+  // const [dataBar, setDataBar] = useState({})
 
   // Load all books and store them with setBooks
   useEffect(() => {
@@ -45,32 +52,41 @@ function Reports({ budgets, expensesTotal }) {
     let userName = {
       user: data.username,
     };
+
     console.log(userName, "username");
-    await API.getExpensesbyType("Groceries", userName)
-      .then( async (res) => {
+    await  API.getExpensesbyType("Groceries", userName)
+      .then(async (res) => {
         console.log("nada");
         if (res) {
           setbudgetsbyType(res.data);
           console.log(res.data, "checking  groceries");
+
           await res.data.map(async (type) => {
             console.log(type._id);
+            
             if (type._id === "groceries") {
               totalGroceries += type.totalType;
+              valueGroceries += type.totalType;
+
               console.log(totalGroceries);
               setGroceries(type.totalType);
-              setTotal(setTotal + type.totalType);
+              setTotal(budgetsTotal + type.totalType);
             }
             if (type._id === "utilities") {
               totalGroceries += type.totalType;
+              valueUtilities += type.totalType;
+
               console.log(totalGroceries);
               setUtilities(type.totalType);
-              setTotal(setTotal + type.totalType);
+              setTotal(budgetsTotal + type.totalType);
             }
             if (type._id === "subscription") {
               totalGroceries += type.totalType;
+              valueSubscriptions += type.totalType;
+
               console.log(totalGroceries);
               setSubscription(type.totalType);
-              setTotal(setTotal + type.totalType);
+              setTotal(budgetsTotal + type.totalType);
             }
             console.log(type.totalType);
           });
@@ -79,6 +95,112 @@ function Reports({ budgets, expensesTotal }) {
         }
       })
       .catch((err) => console.log(err));
+    console.log(
+      valueGroceries,
+      valueUtilities,
+      valueSubscriptions,
+      totalGroceries,
+      "values values values"
+    );
+    dataBar = {
+      labels: ["Groceries", "Utilities", "Subscription", "Total"],
+      datasets: [
+        {
+          label: ["Expenses"],
+          data: [
+            valueGroceries,
+            valueUtilities,
+            valueSubscriptions,
+            totalGroceries,
+          ],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+          ],
+          borderColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+          ],
+          borderWidth: 1,
+        },
+      ],
+    };
+
+    Pie1 = {
+      labels: ["Groceries", "Total"],
+      datasets: [
+        {
+          label: ["Groceries", "Total"],
+          data: [valueGroceries, totalGroceries],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+          ],
+          borderColor: ["rgba(255, 99, 132, 0.2)", "rgba(75, 192, 192, 0.2)"],
+          //   'rgba(255, 99, 132, 1)',
+          //   'rgba(54, 162, 235, 1)',
+          //   'rgba(255, 206, 86, 1)',
+          //   'rgba(75, 192, 192, 1)',
+          //   'rgba(153, 102, 255, 1)',
+          //   'rgba(255, 159, 64, 1)',
+          borderWidth: 1,
+        },
+      ],
+      height: 150,
+      witdh: 150,
+    };
+
+    Pie2 = {
+      labels: ["Utilities", "Total"],
+      datasets: [
+        {
+          label: ["Utilities", "Total"],
+          data: [valueUtilities, totalGroceries],
+          backgroundColor: [
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+          ],
+          borderColor: ["rgba(54, 162, 235, 0.2)", "rgba(75, 192, 192, 0.2)"],
+          //   'rgba(255, 99, 132, 1)',
+          //   'rgba(54, 162, 235, 1)',
+          //   'rgba(255, 206, 86, 1)',
+          //   'rgba(75, 192, 192, 1)',
+          //   'rgba(153, 102, 255, 1)',
+          //   'rgba(255, 159, 64, 1)',
+          borderWidth: 1,
+        },
+      ],
+      height: 150,
+      witdh: 150,
+    };
+
+    Pie3 = {
+      labels: ["Subscriptions", "Total"],
+      datasets: [
+        {
+          label: ["Subscriptions", "Total"],
+          data: [valueSubscriptions, totalGroceries],
+          backgroundColor: [
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+          ],
+          borderColor: ["rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)"],
+          //   'rgba(255, 99, 132, 1)',
+          //   'rgba(54, 162, 235, 1)',
+          //   'rgba(255, 206, 86, 1)',
+          //   'rgba(75, 192, 192, 1)',
+          //   'rgba(153, 102, 255, 1)',
+          //   'rgba(255, 159, 64, 1)',
+          borderWidth: 1,
+        },
+      ],
+      height: 150,
+      witdh: 150,
+    };
   }
 
   function formatDate(date) {
@@ -105,46 +227,43 @@ function Reports({ budgets, expensesTotal }) {
           <h3 className="text-right ">Charts</h3>
           <HR />
         </Col>
-        <BarChart 
-          key={"barChart1"}
-          data1={[
-            budgetsGroceries,
-            budgetsUtilities,
-            budgetsSubscription,
-            expensesTotal,
-          ]}
-        />
+        <Bar key={"barChart1"} data={dataBar} />
       </Row>
-        <Row>
-          {budgetsbyType.length ? (
-            <>
-              {budgetsbyType.map((typeGraph) => {
-                percentage = Math.round(
-                  (typeGraph.totalType / expensesTotal) * 100
-                );
-                if (typeGraph._id === "groceries")
-                  back = ["rgba(255, 99, 132, 0.2)"];
-                if (typeGraph._id === "utilities")
-                  back = ["rgba(54, 162, 235, 0.2)"];
-                if (typeGraph._id === "subscription")
-                  back = ["rgba(255, 206, 86, 0.2)"];
-                return (
-                  <PieChart
-                    key={typeGraph._id}
-                    totalGroceries={[totalGroceries]}
-                    labels1={[typeGraph._id]}
-                    data1={[typeGraph.totalType]}
-                    background1={back}
-                    border1={back}
-                  />
-                );
-              })}
-            </>
-          ) : (
-            <h3>No Results to Display</h3>
-          )}
-        </Row>
-        <Row>
+      <Row>
+        {budgetsbyType.length ? (
+          <>
+            {budgetsbyType.map((typeGraph) => {
+              percentage = Math.round(
+                (typeGraph.totalType / expensesTotal) * 100
+              );
+              if (typeGraph._id === "groceries") back = Pie1;
+              if (typeGraph._id === "utilities") back = Pie2;
+              if (typeGraph._id === "subscription") back = Pie3;
+              return (
+                <>
+                  <Col size="md-4">
+                    <div className="header">
+                      <h3 className="title">{typeGraph._id}</h3>
+                      <div className="links">
+                        <a
+                          className="btn btn-gh"
+                          href="https://github.com/reactchartjs/react-chartjs-2/blob/react16/example/src/charts/Doughnut.js"
+                        >
+                         {typeGraph._id} Page
+                        </a>
+                      </div>
+                    </div>
+                    <Pie key={typeGraph._id} data={back} />
+                  </Col>
+                </>
+              );
+            })}
+          </>
+        ) : (
+          <h3>No Results to Display</h3>
+        )}
+      </Row>
+      <Row>
         <Col size="md-12">
           <h3 className="text-right ">Most Recent Expenses</h3>
           <HR />

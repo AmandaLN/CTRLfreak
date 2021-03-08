@@ -15,7 +15,7 @@ module.exports = {
     console.log(req.params.type, "type");
     console.log(req.body, "tyuserpe");
     db.Budget.aggregate([
-      {$match: {user : "rafa"}}, 
+      {$match: {user : req.body.user}}, 
       {$unwind: { path: "$expenses", preserveNullAndEmptyArrays: true}}, 
       {$group: {_id: "$expenses.type", totalType: {$sum: "$expenses.cost"}}}])
       .sort({ _id: -1 })
