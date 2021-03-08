@@ -1,4 +1,6 @@
-import EditGroceryModal from "../EditGroceryModal"
+import EditGroceryModal from "../EditGroceryModal";
+import "./style.css";
+import Moment from 'react-moment'
 
 const GroceryTable = () => {
 	return (
