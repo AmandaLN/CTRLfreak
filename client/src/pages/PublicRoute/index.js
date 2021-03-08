@@ -87,6 +87,7 @@ function PublicRoute() {
 
 
 	return (
+		<>
 		<div className="container">
 			<SearchHeader />
 			<div className="container">
@@ -99,10 +100,11 @@ function PublicRoute() {
                 />
 			</div>
 			<GroceryTable/>
-				<input className="form-control mr-sm-2" type="search" placeholder="Search Inventory" aria-label="Search" />
-			</div>
+			
+				
 			<GroceryTable budgets={expenses}/>
 		</div>
+		</>
 	)
 }
 

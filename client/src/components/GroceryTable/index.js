@@ -24,9 +24,23 @@ const GroceryTable = ({budgets}) => {
 				        {budgets.length ? (
               <List>
                 {budgets.map(budget => {
-                ``
+					let hour = ""
+					let rest = Date.now() - formatDate(budget.expires)
+					console.log(rest, "time")
+                if (rest == 0) {
+					hour = "today"
+				}
+				else if (hour < 0) {
+					hour = "expired"
+				}
+				else if (hour < 4) {
+					hour = "almost"
+				}
+				else {
+					hour = ""
+				}
                   return (
-                    <ListItem key={budget._id}>
+                    <ListItem key={budget._id} className={hour}>
                       <a href={"/budgets/" + budget._id}>
                         <strong>
                         title : {budget.title} type: {budget.type} cost: {budget.cost} expires: {budget.expires}
