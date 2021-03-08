@@ -1,4 +1,9 @@
-.present {
+.past {
     background-color: #ff6961;
+    color: white;
+  }
+
+  .present {
+    background-color: yellow;
     color: white;
   }

@@ -96,6 +96,7 @@ function PublicRoute() {
                     onChange={e => console.log(e)}
                 />
 			</div>
+
 			<GroceryTable budgets={expenses}/>
 		</div>
 		</>

@@ -24,9 +24,25 @@ console.log(budgets, "this is the right none")
 				        {budgets.length ? (
               <List>
                 {budgets.map(budget => {
-                ``
+					let hour = ""
+					let rest = Date.now() - formatDate(budget.expires)
+					console.log(rest, "time")
+                if (rest == 0) {
+					hour = "today"
+				}
+				else if (hour < 0) {
+					hour = "expired"
+				}
+				else if (hour < 4) {
+					hour = "almost"
+				}
+				else {
+					hour = ""
+				}
                   return (
+
                     <ListItem key={budget._id} className="bg-danger">
+
                       <a href={"/budgets/" + budget._id}>
                         <strong >
                         Type : {budget.id} cost: {budget.totalExpenses}
