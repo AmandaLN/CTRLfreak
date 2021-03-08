@@ -1,4 +1,6 @@
 import React from "react";
+import ExpenseTable from "../ExpenseTable";
+import GroceryTable from "../GroceryTable";
 
 class Search extends React.Component {
 	state = {
@@ -87,7 +89,8 @@ class Search extends React.Component {
                 </tr>
                 </thead>
 				<tbody>
-					
+					<GroceryTable/>
+					<ExpenseTable/>
 				</tbody>
 				</>
 		);
