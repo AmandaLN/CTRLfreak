@@ -13,7 +13,7 @@ const SearchHeader = () => {
 					<h5 className="">Manage</h5>
 				</div>
 				<div className="col md-4">
-					<h5 className="text-success"><AddExpenseModal /></h5>
+					<h5 className="text-success"><AddGroceryModal/></h5>
 				</div>
 			</div>
 		</div>
