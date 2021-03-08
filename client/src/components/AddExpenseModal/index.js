@@ -19,6 +19,10 @@ const AddExpenseModal = () => {
 									<input type="email" className="form-control" id="exampleFormControlInput1" placeholder="Phone Bill, School Loan, etc"/>
 								</div>
 								<div className="form-group">
+									<label for="exampleFormControlInput1">Cost:</label>
+									<input type="email" className="form-control" id="exampleFormControlInput2" placeholder="$"/>
+								</div>
+								<div className="form-group">
 									<label for="exampleFormControlSelect1">Billing Cycle:</label>
 									<select className="form-control" id="exampleFormControlSelect1">
 										<option>Once</option>
@@ -38,7 +42,7 @@ const AddExpenseModal = () => {
 								</div>
 								<div className="form-group">
 									<label for="exampleFormControlTextarea1">Notes:</label>
-									<textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+									<textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Optional"></textarea>
 								</div>
 							</form>
 						</div>

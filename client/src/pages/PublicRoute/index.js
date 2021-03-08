@@ -24,7 +24,7 @@ function PublicRoute() {
 		<div className="container">
 			<SearchHeader />
 			<Search />
-			<ExpenseTable />
+			<GroceryTable/>
 		</div>
 	)
 }
