@@ -3,19 +3,16 @@ import { Pie } from "react-chartjs-2";
 import { Col } from "../Grid";
 
 
-function DoughnutChart ({labels1, data1, background1, border1, totalGroceries}) {
-
-
-
+function PieChart ({labels1, data1, background1, border1, totalGroceries}) {
 
     const [dataChart, setDataChart] = useState({
-        labels: [labels1],
+        labels: [labels1, "Total"],
         datasets: [
           {
-            label: [labels1],
+            label: labels1,
             data: [data1, totalGroceries],
-            backgroundColor: background1,
-            borderColor: border1
+            backgroundColor: [background1, "rgba(75, 192, 192, 0.2)"], 
+            borderColor: [border1, "rgba(75, 192, 192, 0.2)"]
             //   'rgba(255, 99, 132, 1)',
             //   'rgba(54, 162, 235, 1)',
             //   'rgba(255, 206, 86, 1)',
@@ -24,16 +21,13 @@ function DoughnutChart ({labels1, data1, background1, border1, totalGroceries}) 
             //   'rgba(255, 159, 64, 1)',
             ,
             borderWidth: 1,
-            legend: [data1]
           },
         ],
         height: 150,
         witdh: 150,
  
     })
-
-    
-        
+ 
 
 return(
   <>
@@ -55,4 +49,4 @@ return(
   )
 }
 
-export default DoughnutChart
+export default PieChart
