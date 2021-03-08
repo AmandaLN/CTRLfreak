@@ -18,14 +18,14 @@ const GroceryTable = ({budgets}) => {
 		<div className="container text-center">
 		
 				        {budgets.length ? (
-              <List>
+               <List>
                 {budgets.map(budget => {
                 ``
                   return (
                     <ListItem key={budget._id}>
                       <a href={"/budgets/" + budget._id}>
                         <strong>
-                        title : {budget.title} type: {budget.type} cost: {budget.cost} expires: {budget.expires}
+                        title : {budget.title} type: {budget.type} cost: {budget.cost} expires: {formatDate(budget.expires)}
                         </strong>
                       </a>
                       
