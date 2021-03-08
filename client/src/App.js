@@ -30,6 +30,7 @@ function App() {
 						<Route path="/register" component={Register} />
 						<Route path="/reports" component={Reports} />
 						<PrivateRoute path="/protected" component={ProtectedRoute} />
+						<PrivateRoute path="/protected2" component={ProtectedRoute} />
 						{/* <Route component={NoMatch} /> */}
 					</Switch>
 				</Container>
