@@ -1,6 +1,9 @@
+
 import EditGroceryModal from "../EditGroceryModal"
 import { List, ListItem } from "../List";
 import SearchHeader from "../SearchHeader";
+import "./style.css";
+import Moment from 'react-moment'
 
 const GroceryTable = ({budgets}) => {
 
@@ -13,6 +16,7 @@ const GroceryTable = ({budgets}) => {
 		const formattedDate = [month, day, year].join("-");
 		return formattedDate
 	}
+
 
 	return (
 		<div className="container text-center">

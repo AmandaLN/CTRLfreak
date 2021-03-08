@@ -1,15 +1,17 @@
 /* This is a very simple component.. it probably doesn't need to be a smart component at this point but you never know what's goingto happen in the future */
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API"
-import Search from "../../components/Search"
+// import Search from "../../components/Search"
 import SearchHeader from "../../components/SearchHeader"
 import GroceryTable from "../../components/GroceryTable"
 import ExpenseTable from "../../components/ExpenseTable"
 
 
 function PublicRoute() {
+
 	const [expenses, setExpenses] = useState({})
 	const [search, setSearch] = useState({
+
 		result: [{}],
 		filteredTable: [{}],
 		order: "descend"
@@ -32,12 +34,16 @@ function PublicRoute() {
 			.catch(err => console.log(err))
 	}, [])
 
+
+	// filters the table while you are typing in search
+
 	handleSearchChange = (event) => {
 		const filter = event.target.value;
 		const filteredList = this.state.result.filter((item) => {
 			let values = Object.values(item).join("").toLowerCase();
 			return values.indexOf(filter.toLowerCase()) !== -1;
 		});
+
 
 		this.setState({ filteredTable: filteredList });
 	};
@@ -79,10 +85,20 @@ function PublicRoute() {
 		this.setState({ filteredTable: sortedTable });
 	};
 
+
 	return (
 		<div className="container">
 			<SearchHeader />
 			<div className="container">
+			<input
+                    className="form-control mr-sm-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    onChange={e => this.handleSearchChange(e)}
+                />
+			</div>
+			<GroceryTable/>
 				<input className="form-control mr-sm-2" type="search" placeholder="Search Inventory" aria-label="Search" />
 			</div>
 			<GroceryTable budgets={expenses}/>

@@ -1,4 +1,6 @@
-import EditExpenseModal from "../EditExpenseModal"
+import EditExpenseModal from "../EditExpenseModal";
+import "./style.css";
+import Moment from 'react-moment'
 
 const ExpenseTable = () => {
 	return (

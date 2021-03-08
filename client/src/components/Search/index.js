@@ -1,3 +1,5 @@
+
+
 import React from "react";
 import ExpenseTable from "../ExpenseTable";
 import GroceryTable from "../GroceryTable";
@@ -59,8 +61,10 @@ class Search extends React.Component {
 			return values.indexOf(filter.toLowerCase()) !== -1;
 		});
 
-		this.setState({ filteredTable: filteredList });
-	};
+
+// 		this.setState({ filteredTable: filteredList });
+// 	};
+
 
 	componentDidMount() {
 		API.getBudgets().then((results) => {
@@ -104,8 +108,9 @@ class Search extends React.Component {
 				</tbody>
 				</>
 		);
-		
-	}
 
-}
-	export default Search;
+		
+// 	}
+
+// }
+// 	export default Search;
