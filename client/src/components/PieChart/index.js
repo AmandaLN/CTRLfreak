@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Pie } from "react-chartjs-2";
 import { Col } from "../Grid";
+import API from "../../utils/API";
 
-
-function PieChart ({labels1, data1, background1, border1, totalGroceries}) {
+function PieChart ({labels1, data1, background1, border1, totalGroceries, user}) {
 
     const [dataChart, setDataChart] = useState({
         labels: [labels1, "Total"],
@@ -25,10 +25,8 @@ function PieChart ({labels1, data1, background1, border1, totalGroceries}) {
         ],
         height: 150,
         witdh: 150,
- 
     })
  
-
 return(
   <>
     <Col size="md-4">
