@@ -28,7 +28,7 @@ console.log(data1)
           },
         ],
     })
- 
+
 return(
   <>
     <Col size="md-12">
