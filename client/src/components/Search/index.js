@@ -1,6 +1,7 @@
 import React from "react";
 import ExpenseTable from "../ExpenseTable";
 import GroceryTable from "../GroceryTable";
+import API from "../../utils/API";
 
 class Search extends React.Component {
 	state = {
@@ -12,7 +13,6 @@ class Search extends React.Component {
         
 		{ name: "Expense" },
 		{ name: "Item"},
-       
       ];
 	//   order for the table
 	handleSort = () => {
@@ -62,10 +62,20 @@ class Search extends React.Component {
 		this.setState({ filteredTable: filteredList });
 	};
 
+	componentDidMount() {
+		API.getBudgets().then((results) => {
+		  this.setState({
+			users: results.data.results,
+			filteredUsers: results.data.results,
+		  });
+		});
+	  }
+
+
 	render() {
 		return (
 			<>
-			<Search handleSearchChange={this.handleSearchChange} />
+			{/* <Search handleSearchChange={this.handleSearchChange} /> */}
 			<div className="container">
 				<input className="form-control mr-sm-2" type="search" placeholder="Search Inventory" aria-label="Search" />
 			</div>
@@ -89,8 +99,8 @@ class Search extends React.Component {
                 </tr>
                 </thead>
 				<tbody>
-					<GroceryTable/>
-					<ExpenseTable/>
+					{/* <GroceryTable/>
+					<ExpenseTable/> */}
 				</tbody>
 				</>
 		);

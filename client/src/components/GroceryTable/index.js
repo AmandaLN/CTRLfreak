@@ -1,30 +1,43 @@
 import EditGroceryModal from "../EditGroceryModal"
+import { List, ListItem } from "../List";
+import SearchHeader from "../SearchHeader";
 
-const GroceryTable = () => {
+const GroceryTable = ({budgets}) => {
+
+	function formatDate(date){
+		const dateArray = date.split("-");
+		const year = dateArray[0];
+		const month = dateArray[1];
+		const dayArray = dateArray[2].split("T");
+		const day = dayArray[0];
+		const formattedDate = [month, day, year].join("-");
+		return formattedDate
+	}
+
 	return (
 		<div className="container text-center">
-			<table className="table table-hover">
-				<thead className="bg-secondary">
-					<tr className="text-light">
-						<th scope="col"></th>
-						<th scope="col">Item</th>
-						<th scope="col">Quantity</th>
-						<th scope="col">Cost</th>
-						<th scope="col">Expires</th>
-						<th scope="col"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row" className="text-success"><i className="far fa-edit" data-toggle="modal" data-target="#editGroceryModalCenter"/><EditGroceryModal/></th>
-						<td>Brown Egg</td>
-						<td>12</td>
-						<td>$3.99</td>
-						<td>10/10/2021</td>
-						<td className="text-danger"><i className="far fa-trash-alt" /></td>
-					</tr>
-				</tbody>
-			</table>
+		
+				        {budgets.length ? (
+              <List>
+                {budgets.map(budget => {
+                ``
+                  return (
+                    <ListItem key={budget._id}>
+                      <a href={"/budgets/" + budget._id}>
+                        <strong>
+                        title : {budget.title} type: {budget.type} cost: {budget.cost} expires: {budget.expires}
+                        </strong>
+                      </a>
+                      
+                    </ListItem>
+                  );
+                })}
+   
+              </List>
+            ) : (
+              <h3>No Results to Display</h3>
+            )}
+
 		</div>
 	);
 }
