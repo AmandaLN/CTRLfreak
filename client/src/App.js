@@ -36,7 +36,7 @@ function App() {
 						{/* <Route component={NoMatch} /> */}
 					</Switch>
 				</Container>
-				{/* <Footer /> */}
+				<Footer />
 			</div>
 
 		</Router>
