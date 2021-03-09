@@ -17,16 +17,31 @@ console.log(budgets, "this is the right none")
 		return formattedDate
 	}
 
-
 	return (
 		<div className="container text-center">
 		
 				        {budgets.length ? (
                <List>
                 {budgets.map(budget => {
-                ``
+					let hour = ""
+					let rest = Date.now() - formatDate(budget.expires)
+					console.log(rest, "time")
+                if (rest == 0) {
+					hour = "today"
+				}
+				else if (hour < 0) {
+					hour = "expired"
+				}
+				else if (hour < 4) {
+					hour = "almost"
+				}
+				else {
+					hour = ""
+				}
                   return (
+
                     <ListItem key={budget._id} className="bg-danger">
+
                       <a href={"/budgets/" + budget._id}>
                         <strong >
                         Type : {budget.id} cost: {budget.totalExpenses}
@@ -36,7 +51,6 @@ console.log(budgets, "this is the right none")
                     </ListItem>
                   );
                 })}
-   
               </List>
             ) : (
               <h3>No Results to Display</h3>

@@ -1,4 +1,15 @@
-.present {
-    background-color: #ff6961;
-    color: white;
-  }
+.expired {
+  background-color: #ff6961;
+  color: white;
+}
+
+.today {
+  background-color: yellow;
+  color: white;
+}
+
+
+.almost {
+  background-color: green;
+  color: white;
+}

@@ -62,8 +62,8 @@ class Search extends React.Component {
 		});
 
 
-// 		this.setState({ filteredTable: filteredList });
-// 	};
+		this.setState({ filteredTable: filteredList });
+	};
 
 
 	componentDidMount() {
