@@ -31,7 +31,7 @@ function App() {
 						<Route path="/login" component={Login} />
 						<Route path="/register" component={Register} />
 						<Route path="/reports" component={Reports} />
-						<Route path="/inventory" component={Inventory} />
+						<PrivateRoute path="/inventory" component={Inventory} />
 						<PrivateRoute path="/protected" component={ProtectedRoute} />
 						<PrivateRoute path="/protected2" component={ProtectedRoute} />
 						{/* <Route component={NoMatch} /> */}
