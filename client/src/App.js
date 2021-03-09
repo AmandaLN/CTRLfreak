@@ -13,7 +13,7 @@ import Register from "./components/Register";
 import Reports from "./components/Reports";
 import { Container } from "./components/Grid";
 import PublicRoute from "./pages/PublicRoute";
-import Welcome from "./pages/Welcome";
+import Welcome from "./pages/Welcome.js";
 import Inventory from "./pages/ProtectedRoute/Inventory";
 import ProtectedRoute from "./pages/ProtectedRoute";
 
@@ -37,7 +37,7 @@ function App() {
 						{/* <Route component={NoMatch} /> */}
 					</Switch>
 				</Container>
-				{/* <Footer /> */}
+				<Footer />
 			</div>
 
 		</Router>
