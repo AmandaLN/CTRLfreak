@@ -27,7 +27,6 @@ let expensesTotal = 0;
   
   // Load all books and store them with setBooks
    useEffect(() => {
- 
     fetch('api/users/user', {
 			credentials: 'include'
 			})

@@ -30,7 +30,7 @@ module.exports = {
       {$unwind: '$expenses'},
          {
              $match: {
-                 user : "rafa" ,
+                 user : req.body.user ,
                  "expenses.type": { 
                      $in: [
                          req.params.type
