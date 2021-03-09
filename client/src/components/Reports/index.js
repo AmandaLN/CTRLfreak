@@ -287,7 +287,7 @@ function Reports({ budgets, expensesTotal }) {
         </Col>
       </Row>
       <Row>
-        <PublicRoute />
+       
       </Row>
     </div>
   );

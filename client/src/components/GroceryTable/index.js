@@ -17,7 +17,6 @@ console.log(budgets, "this is the right none")
 		return formattedDate
 	}
 
-
 	return (
 		<div className="container text-center">
 		
@@ -52,7 +51,6 @@ console.log(budgets, "this is the right none")
                     </ListItem>
                   );
                 })}
-   
               </List>
             ) : (
               <h3>No Results to Display</h3>
