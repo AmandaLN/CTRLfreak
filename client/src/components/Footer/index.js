@@ -7,7 +7,7 @@ function Footer() {
   return (
     <footer className="footer-dark bg-dark bg-info text-light fixed-bottom">
 
-      <div className="d-flex align-items-center pt-4">
+      <div className="d-flex align-items-center pt-3">
 
         <Col size="md-2" >Amanda
 
