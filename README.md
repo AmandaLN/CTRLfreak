@@ -30,8 +30,8 @@ Passport
 PWA
 
 ## Usage
-![About]("./public/assets/images/about.png")
-![Login]("./public/assets/images/about.png")
+![About](./client/public/assets/images/about.png)
+![Login](./client/public/assets/images/login.png)
 ![]()
 ![]()
 ![]()
