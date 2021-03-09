@@ -22,6 +22,26 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  findInventory: function (req, res) {
+    console.log(req.params.type, "type");
+    console.log(req.body, "user");
+    console.log(req.params)
+    db.Budget.aggregate([
+      {$unwind: '$expenses'},
+         {
+             $match: {
+                 user : "rafa" ,
+                 "expenses.type": { 
+                     $in: [
+                         req.params.type
+                     ] 
+                 }
+             }
+         }])
+      .sort({ _id: -1 })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
   findExpense: function (req, res) {
     console.log(req.params.user, "dan");
     db.Budget.aggregate()

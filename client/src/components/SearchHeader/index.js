@@ -17,6 +17,17 @@ const SearchHeader = () => {
 					<h5 className="text-success"><AddGroceryModal /></h5>
 				</Col>
 			</Row>
+			<Row>
+			<div className="container">
+			<input
+                    className="form-control mr-sm-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    onChange={e => console.log(e)}
+                />
+			</div>
+			</Row>
 		</div>
 	);
 }
