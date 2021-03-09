@@ -14,6 +14,10 @@ export default {
     console.log(type, "getbudget by type")
     return axios.put("/api/budget/expenses/" + type, activeUser);
   },
+  getInventory: function(type, activeUser) {
+    console.log(type, "getbudget by type")
+    return axios.put("/api/budget/inventory/" + type, activeUser);
+  },
   // Deletes the budget with the given id
   deleteBudget: function(id, deleteUser) {
     return axios.put("/api/budget/test/" + id, deleteUser);
