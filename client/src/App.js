@@ -13,6 +13,7 @@ import Register from "./components/Register";
 import Reports from "./components/Reports";
 import { Container } from "./components/Grid";
 import PublicRoute from "./pages/PublicRoute";
+import Welcome from "./pages/Welcome.js";
 import Inventory from "./pages/ProtectedRoute/Inventory";
 import ProtectedRoute from "./pages/ProtectedRoute";
 
@@ -26,17 +27,17 @@ function App() {
 				<Nav className="App-header" />
 				<Container>
 					<Switch>
-						<Route path="/public" component={PublicRoute} />
+						<Route path="/public" component={Welcome} />
 						<Route path="/login" component={Login} />
 						<Route path="/register" component={Register} />
 						<Route path="/reports" component={Reports} />
-						<Route path="/inventory" component={Inventory} />
+						<PrivateRoute path="/inventory" component={Inventory} />
 						<PrivateRoute path="/protected" component={ProtectedRoute} />
 						<PrivateRoute path="/protected2" component={ProtectedRoute} />
 						{/* <Route component={NoMatch} /> */}
 					</Switch>
 				</Container>
-				{/* <Footer /> */}
+				<Footer />
 			</div>
 
 		</Router>

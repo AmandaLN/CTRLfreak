@@ -248,7 +248,7 @@ function Reports({ budgets, expensesTotal }) {
                       <div className="links">
                         <a
                           className="btn btn-gh"
-                          href="https://github.com/reactchartjs/react-chartjs-2/blob/react16/example/src/charts/Doughnut.js"
+                          href={"/inventory/" + typeGraph._id} 
                         >
                          {typeGraph._id} Page
                         </a>
