@@ -1,0 +1,10 @@
+#jumbo {
+	background-repeat: no-repeat;
+	background-position: 90%;
+	background-size: contain;
+	background-image: url("https://image.flaticon.com/icons/png/512/1693/1693056.png");
+}
+
+.jumbotron-fluid {
+	margin: bottom 0;
+}
