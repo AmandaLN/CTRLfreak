@@ -1,35 +1,45 @@
 /* This is a very simple component.. it probably doesn't need to be a smart component at this point but you never know what's goingto happen in the future */
-import React, { useEffect, useState, useContext } from "react";
+import React, {useEffect, useState } from "react";
 import API from "../../utils/API";
 import {useLocation} from "react-router-dom";
 // import Search from "../../components/Search"
 import { List, ListItem } from "../../components/List";
 import { UserContext } from "../../utils/UserContext";
 import SearchHeader from "../../components/SearchHeader";
-import GroceryTable from "../../components/GroceryTable";
-import ExpenseTable from "../../components/ExpenseTable";
+import DataTable from "../../components/DataTable";
+import ExpenseTable from "../../components/DataBody";
 let activeUser;
 let budgetInventory = [];
-let typeLocation ;
+ let typeLocation ;
+ let userLocation;
 
 
 function Inventory() {
   const [budget, setExpenses] = useState([{}]);
-  const [type, setType] = useState();
+  const [filteredBudget, setFilteredBudget] = useState([{}]);
+  const [locationPage, setLocation] = useState("");
+  // const [typeLocation, setType] = useState();
   // const { user } = useContext(UserContext);
-  const [user, dispatch] = useContext(UserContext);
-  const [page, setPage] = useState();
+
+
+  const headings = [
+    { name: "Title", width: "10%" },
+    { name: "Quantity", width: "10%" },
+    { name: "Expires/DueDate", width: "20%" },
+    { name: "Cost", width: "20%" },
+    { name: "Type", width: "10%" },
+  ];
 
   console.log("inventory load");
   let location = useLocation();
  
   console.log(location);
-  
+  userLocation = location.user
+  typeLocation = location.type
 
 
   useEffect(() => {
-    typeLocation = location.type
-    setPage(location.type)
+    setLocation(...locationPage, location.type)
     // fetch("api/users/user", {
     //   credentials: "include",
     // })
@@ -46,36 +56,40 @@ function Inventory() {
     //   .catch((err) => {
     //     console.log("Error fetching authorized user.");
     //   });
-    console.log(user.username, "user username")
-	getTypeInventory(user.username, typeLocation);
+       console.log("location page")
+      // setType(location.type)
+    console.log(typeLocation, "location type")
+      let username = {
+        user: userLocation,
+      };
+      
+       API.getInventory(typeLocation, username)
+        .then((res) => {
+          console.log(res.data, "inventory inventory");
+      console.log(res.data[0].expenses.title, "checking expenses title")
+      budgetInventory = res.data
+          setExpenses(...budget, res.data[0].expenses);
+          setFilteredBudget(...filteredBudget, res.data[0].expenses);
+          console.log(budget, filteredBudget, "trying budget and filtered")
+        })
+        .catch((err) => console.log(err));
+
+	// getTypeInventory(userLocation);
+
   }, [typeLocation]);
-
-
   // filters the table while you are typing in search
-  async function getTypeInventory(user) {
-    typeLocation = location.type
-    let username = {
-      user: user,
-    };
-    await API.getInventory(typeLocation, username)
-      .then((res) => {
-        console.log(res.data, "inventory inventory");
-		console.log(res.data[0].expenses.title, "checking expenses title")
-		budgetInventory = res.data
-        setExpenses(res.data);
-	
-      })
-      .catch((err) => console.log(err));
-  }
+
 
   function handleSearchChange(event) {
     const filter = event.target.value;
-    const filteredList = this.state.result.filter((item) => {
+    console.log(filter, "filter")
+    const filteredList = budget.filter((item) => {
+      console.log(item, "item")
       let values = Object.values(item).join("").toLowerCase();
       return values.indexOf(filter.toLowerCase()) !== -1;
     });
 
-    this.setState({ filteredTable: filteredList });
+    setFilteredBudget({...filteredBudget, filteredList});
   }
 
   function handleSort() {
@@ -112,35 +126,20 @@ function Inventory() {
       }
     }
     const sortedTable = this.state.filteredTable.sort(compareFnc);
-    this.setState({ filteredTable: sortedTable });
+    setFilteredBudget({...filteredBudget, sortedTable });
   }
 
   return (
     <>
       <div className="container">
-        <h1>{page}</h1>
         <SearchHeader handleSearchChange={handleSearchChange}/>
-        {budgetInventory.length ? (
-          <List>
-            {budgetInventory.map((one) => {
-              return (
-        
-                  <ListItem key={one.expenses.title}>
-                    <a href={"/budgets/" + one.expenses._id}>
-                      <strong>
-                        title : {one.expenses.title} cost: {one.expenses.cost}
-                      </strong>
-                    </a>
-                  </ListItem>
-                
-              );
-            })}
-          </List>
-        ) : (
-          <h3>No Results to Display</h3>
-        )}
-
-        {/* <GroceryTable budgets={expenses}/> */}
+       <h1>{typeLocation}</h1>
+       <h2>{locationPage}</h2>
+       <DataTable
+            headings={headings}
+            users={budgetInventory}
+            handleSort={handleSort}
+          />
       </div>
     </>
   );

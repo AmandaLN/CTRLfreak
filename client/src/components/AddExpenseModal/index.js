@@ -23,20 +23,6 @@ const AddExpenseModal = () => {
 									<input type="email" className="form-control" id="exampleFormControlInput2" placeholder="$"/>
 								</div>
 								<div className="form-group">
-									<label for="exampleFormControlSelect1">Billing Cycle:</label>
-									<select className="form-control" id="exampleFormControlSelect1">
-										<option>Once</option>
-										<option>Weekly</option>
-										<option>Biweekly</option>
-										<option>Monthly</option>
-										<option>Bimonthly</option>
-										<option>Quarterly</option>
-										<option>Triannually</option>
-										<option>Biannually</option>
-										<option>Anually</option>
-									</select>
-								</div>
-								<div className="form-group">
 									<label for="exampleFormControlInput2">Due Date:</label>
 									<input type="email" className="form-control" id="exampleFormControlInput2" placeholder="MM/DD/YYYY"/>
 								</div>
