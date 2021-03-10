@@ -18,6 +18,7 @@ function Inventory() {
   const [type, setType] = useState();
   // const { user } = useContext(UserContext);
   const [user, dispatch] = useContext(UserContext);
+  const [page, setPage] = useState();
 
   console.log("inventory load");
   let location = useLocation();
@@ -28,6 +29,7 @@ function Inventory() {
 
   useEffect(() => {
     typeLocation = location.type
+    setPage(location.type)
     // fetch("api/users/user", {
     //   credentials: "include",
     // })
@@ -46,7 +48,9 @@ function Inventory() {
     //   });
     console.log(user.username, "user username")
 	getTypeInventory(user.username, typeLocation);
-  }, []);
+  }, [typeLocation]);
+
+
   // filters the table while you are typing in search
   async function getTypeInventory(user) {
     typeLocation = location.type
@@ -114,7 +118,8 @@ function Inventory() {
   return (
     <>
       <div className="container">
-        <SearchHeader />
+        <h1>{page}</h1>
+        <SearchHeader handleSearchChange={handleSearchChange}/>
         {budgetInventory.length ? (
           <List>
             {budgetInventory.map((one) => {

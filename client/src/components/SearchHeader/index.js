@@ -2,7 +2,7 @@ import AddExpenseModal from "../AddExpenseModal"
 import AddGroceryModal from "../AddGroceryModal"
 import { Col, Row, Container } from "../Grid";
 
-const SearchHeader = () => {
+const SearchHeader = ({handleSearchChange}) => {
 	return (
 		
 		<div className="container text-center">
@@ -24,7 +24,7 @@ const SearchHeader = () => {
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
-                    onChange={e => console.log(e)}
+                    onChange={e => handleSearchChange(e)}
                 />
 			</div>
 			</Row>
