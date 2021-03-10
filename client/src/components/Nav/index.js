@@ -63,12 +63,14 @@ function Nav() {
                     Budgets
                   </a>
                   <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory", type: "subscriptions"}}>Subscriptions</Link>
-                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory", type: "utilities"}}>Utilities</Link>
-                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory", type: "groceries"}}>Groceries</Link>
+                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/subscriptions", type: "subscriptions", user: user.username}}>Subscriptions</Link>
+                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/utilities", type: "utilities", user: user.username}}>Utilities</Link>
+                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/groceries", type: "groceries", user: user.username}}>Groceries</Link>
                   </div>
                 </li>
+
                     :     
+
             ""}
          
           <div className="container mr-5">

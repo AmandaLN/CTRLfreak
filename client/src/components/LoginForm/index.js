@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import Card from "../Card"
+import { Container } from '../Grid/Container';
 
 function LoginForm({ onLogin }) {
 
@@ -8,6 +9,7 @@ function LoginForm({ onLogin }) {
 	const passwordRef = useRef();
 
 	return (
+		<Container>
 		<Card title="Login with your Username and Password">
 			<form
 				ref={formRef}
@@ -28,6 +30,7 @@ function LoginForm({ onLogin }) {
 				</div>
 			</form>
 		</Card>
+		</Container>
 	)
 }
 

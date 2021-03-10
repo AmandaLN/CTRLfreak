@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import Card from "../Card"
+import { Container } from '../Grid/Container';
 
 // class RegisterForm extends React.Component {
 function RegisterForm({ onRegister }) {
@@ -9,6 +10,7 @@ function RegisterForm({ onRegister }) {
 	const passwordRef = useRef();
 
 	return (
+		<Container>
 		<Card title="Register a New User">
 			<form
 				ref={formRef}
@@ -27,6 +29,7 @@ function RegisterForm({ onRegister }) {
 				</div>
 			</form>
 		</Card>
+		</Container>
 	)
 }
 
