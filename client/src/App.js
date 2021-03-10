@@ -15,7 +15,7 @@ import { Container } from "./components/Grid";
 import PublicRoute from "./pages/PublicRoute";
 import Welcome from "./pages/Welcome.js";
 import Inventory from "./pages/ProtectedRoute/Inventory";
-import ProtectedRoute from "./pages/ProtectedRoute";
+import Budget from "./pages/ProtectedRoute/Budget";
 import { UserProvider } from "./utils/UserContext";
 
 function App() {
@@ -29,8 +29,8 @@ function App() {
 						<Route path="/login" component={Login} />
 						<Route path="/register" component={Register} />
 						<PrivateRoute path="/inventory" component={Inventory} />
-						<PrivateRoute path="/protected" component={ProtectedRoute} />
-						<PrivateRoute path="/protected2" component={ProtectedRoute} />
+						<PrivateRoute path="/protected" component={Budget} />
+						<PrivateRoute path="/protected2" component={Budget} />
 						{/* <Route component={NoMatch} /> */}
 					</Switch>
 				<Footer />

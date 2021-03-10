@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import Jumbotron from "../Jumbotron";
-import GroceryTable from "../GroceryTable";
+import DataTable from "../DataTable";
 import { UserContext } from "../../utils/UserContext";
 import DeleteBtn from "../DeleteBtn";
 import Reports from "../Reports";
@@ -187,7 +187,7 @@ let expensesTotal = 0;
           </Col>
         </Row>
         <Reports expensesTotal = {expensesTotal} budgets={budgets}/>
-        <GroceryTable budgets={budgets}/>
+        {/* <GroceryTable budgets={budgets}/> */}
       </Container>
     );
   }

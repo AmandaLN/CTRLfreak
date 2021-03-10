@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import API from "../../utils/API"
 // import Search from "../../components/Search"
 import SearchHeader from "../../components/SearchHeader"
-import GroceryTable from "../../components/GroceryTable"
-import ExpenseTable from "../../components/ExpenseTable"
+import DataTable from "../../components/DataTable"
+import DataBody from "../../components/DataBody"
 
 
 function PublicRoute() {
@@ -97,7 +97,7 @@ function PublicRoute() {
                 />
 			</div>
 
-			<GroceryTable budgets={expenses}/>
+			{/* <GroceryTable budgets={expenses}/> */}
 		</div>
 		</>
 	)

@@ -6,7 +6,7 @@ import Budgets from "../../components/Budgets"
 
 /* This is a very simple component.. it probably doesn't need to be a smart component at this point but you never know what's goingto happen in the future */
 
-function ProtectedRoute() {
+function Budget() {
 	const [user, dispatch] = useContext(UserContext)
 	console.log(user, "protected route index")
 
@@ -40,4 +40,4 @@ function ProtectedRoute() {
 
 }
 
-export default ProtectedRoute
+export default Budget

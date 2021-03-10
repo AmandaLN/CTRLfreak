@@ -4,6 +4,7 @@ import { Col, Row } from "../Grid";
 import HR from "../HR";
 import { List, ListItem } from "../List";
 import { UserContext } from "../../utils/UserContext";
+import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import PublicRoute from "../../pages/PublicRoute";
 let totalGroceries = 0;
@@ -30,6 +31,10 @@ function Reports({ budgets, expensesTotal }) {
   const [user, dispatch] = useContext(UserContext);
   const [budgetsTotal, setTotal] = useState(0);
   // const [dataBar, setDataBar] = useState({})
+
+  const buttonStyle = {
+    marginRight: 10
+  };
 
   // Load all books and store them with setBooks
   useEffect(() => {
@@ -206,6 +211,7 @@ function Reports({ budgets, expensesTotal }) {
     };
   }
 
+
   function formatDate(date) {
     const dateArray = date.split("-");
     const year = dateArray[0];
@@ -248,6 +254,7 @@ function Reports({ budgets, expensesTotal }) {
                     <div className="header">
                       <h3 className="title">{typeGraph._id}</h3>
                       <div className="links">
+                      <Link key={typeGraph._id} style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/" + typeGraph._id, type: typeGraph._id, user: user.username}}>Subscriptions</Link>
                         <a
                           className="btn btn-gh"
                           href={"/inventory/" + typeGraph._id} 
