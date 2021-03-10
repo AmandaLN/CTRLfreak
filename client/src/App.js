@@ -16,7 +16,6 @@ import PublicRoute from "./pages/PublicRoute";
 import Welcome from "./pages/Welcome.js";
 import Inventory from "./pages/ProtectedRoute/Inventory";
 import ProtectedRoute from "./pages/ProtectedRoute";
-
 import { UserProvider } from "./utils/UserContext";
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
 		<Router>
 			<div>
 				<Nav className="App-header" />
-				<Container>
 					<Switch>
 						<Route path="/public" component={Welcome} />
 						<Route path="/login" component={Login} />
@@ -35,7 +33,6 @@ function App() {
 						<PrivateRoute path="/protected2" component={ProtectedRoute} />
 						{/* <Route component={NoMatch} /> */}
 					</Switch>
-				</Container>
 				<Footer />
 			</div>
 		</Router>

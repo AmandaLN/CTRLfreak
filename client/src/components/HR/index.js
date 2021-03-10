@@ -1,4 +1,4 @@
-// import './style.scss';
+
 
 const Hr = () => {
     return ( 
