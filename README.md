@@ -31,7 +31,7 @@ PWA
 
 ## Usage
 ![Login](./client/public/assets/images/login2.png)
-![Register](./client/public/assets/images/regiser.png)
+![Register](./client/public/assets/images/register.png)
 ![]()
 ![]()
 ![]()
