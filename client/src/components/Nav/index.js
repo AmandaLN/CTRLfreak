@@ -135,29 +135,29 @@ function Nav() {
       <div className={`${open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
         {user.username ? <span className="userText text-white ml-3 pt-1" to="#">Hi {user.username} !</span> : ""}
         <ul className="navbar-nav ml-auto">
+        
+          {user.username ? 
+                  <li className="nav-item dropdown ">
+                  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Budgets
+                  </a>
+                  <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory", type: "subscriptions"}}>Subscriptions</Link>
+                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory", type: "utilities"}}>Utilities</Link>
+                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory", type: "groceries"}}>Groceries</Link>
+                  </div>
+                </li>
+                         :
+            ""}
+         
           <li className="nav-item ">
             <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to="/public">About Us</Link>
-            <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to="/reports">Reports</Link>
-
             <Link style={buttonStyle} className="btn btn-light font-weight-bold" to="/protected">Budget</Link>
-            {user.username ? 
-                        <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to="/inventory/groceries">Groceries</Link>
-                         :
-            ""}
-            {user.username ? 
-                        <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to="/inventory/utilities">Utilities</Link>
-                         :
-            ""}
-            {user.username ? 
-                        <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to="/inventory/subscriptions">Subscriptions</Link>
-                         :
-            ""}
             {user.username ? "" :
               <Link style={buttonStyle} className="btn btn-light font-weight-bold" to="/register">Register a New User</Link>
             }
             <AuthButton />
           </li>
-
         </ul>
       </div>
     </nav>

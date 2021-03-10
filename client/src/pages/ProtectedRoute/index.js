@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { UserContext } from "../../utils/UserContext";
-import Budgets from "../../components/Budget"
+import Budgets from "../../components/Budgets"
 
 
 

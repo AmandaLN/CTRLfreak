@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { defaults,  Bar, Pie } from "react-chartjs-2";
 import { Col, Row } from "../Grid";
 import HR from "../HR";
 import { List, ListItem } from "../List";
+import { UserContext } from "../../utils/UserContext";
 import API from "../../utils/API";
 import PublicRoute from "../../pages/PublicRoute";
 let totalGroceries = 0;
@@ -26,6 +27,7 @@ function Reports({ budgets, expensesTotal }) {
   const [budgetsGroceries, setGroceries] = useState(0);
   const [budgetsUtilities, setUtilities] = useState(0);
   const [budgetsSubscription, setSubscription] = useState(0);
+  const [user, dispatch] = useContext(UserContext);
   const [budgetsTotal, setTotal] = useState(0);
   // const [dataBar, setDataBar] = useState({})
 
