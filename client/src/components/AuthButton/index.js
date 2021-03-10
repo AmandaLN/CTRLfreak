@@ -26,7 +26,7 @@ const AuthButton = () => {
 				<Link
 					className="btn btn-primary rounded-pill font-weight-bold px-4"
 					to="/login"
-				>Login
+				>Log In
 				</Link>
 			)
 	)
