@@ -17,6 +17,7 @@ import Welcome from "./pages/Welcome.js";
 import Inventory from "./pages/ProtectedRoute/Inventory";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import { UserProvider } from "./utils/UserContext";
+import AboutUs from "./components/AboutUs";
 
 function App() {
 	return (
@@ -26,7 +27,7 @@ function App() {
 				<Nav className="App-header" />
 					<Switch>
 						<Route exact path="/" component={Welcome} />
-						<Route path="/public" component={Welcome} />
+						<Route path="/public" component={AboutUs} />
 						<Route path="/login" component={Login} />
 						<Route path="/register" component={Register} />
 						<PrivateRoute path="/inventory" component={Inventory} />
