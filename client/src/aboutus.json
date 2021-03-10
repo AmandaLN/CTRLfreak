@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "Rafael Vasquez",
+        "image": "https://avatars.githubusercontent.com/u/74888895?s=400&u=537567e5163414fd63dd967709638e2d09e60e4e&v=4",
+        "occupation": "Full Stack Web Developer",
+        "location": "Orlando, FL",
+        "hobbies": "Reading, Scuba Diving, and Snowboarding"
+      },
+      {
+        "id": 2,
+        "name": "Alejandro Castro",
+        "image": "https://avatars.githubusercontent.com/u/75534998?s=400&u=f1685394c3910b1256337b020b0e3593bf7a1cbd&v=4",
+        "occupation": "Full Stack Web Developer",
+        "location": "Naples, FL",
+        "hobbies": "Gaming, Cryptocurrency, and Music"
+      },
+      {
+        "id": 3,
+        "name": "Amanda Nelson",
+        "image": "https://lh3.googleusercontent.com/19Q0FRV9xBqcFCZpqeplf-4MVwnGVaEZKZ4qZwim8cKeMF13v0eZebXLNQsSuxHT54DGoICjUQB_7W5gmPekUckyKAIVBF4dzH8BPOQ9SXTyFj_6xmG77piooGymI7601TZtTw1qthq4gWAdPHsBkUS6jt7sUX9A0iKuZEKGedKzAp_gM3kXbRL2Bb4aAWrMFgMo5yi_P-TbM43IijzrsH4crfGzG83b4AxF4qk_pBAXKwaStlYIgxD_A11cIt8w_YMz2PUMiMC5y-7JHuHKlFlQA-gzBFj9Z6qorRX5h6AcfH0bS-hIZ0h_Xcmd1u2_9_6YQhG2198MbNEDgiiMErTM_9S7FQbfkciEnF_zteECUwbo6hgfjO0AVfsPG1WWcRucIF3brgEwHrpHOa_xXI3RRzgNV-kq2rGKrhdP-nyv0R8dC3X5sDo56WfcGMtE3DbtSpTBrNElbB4BROthg51MkQSNAiR3_KhZhw2LVfgGoLTYFSaBMZpZqDLt4e2eHaZ9JVXOM2RkkwwajWOiJB0SBY4CIpaviDbs06EoEg9bMoHyAhaanQkPIsuGg-mby-js2fhHGnuw_EAb3oKhJBtGwDWBlzkM-iLoqj738W7Rpfwwm2ct7XZ1iAHAr7TAFQ55V8Cq9oUfIExSHXrHRxN2t4CIzLOIEw-0NVduSPA6hBoWDoyKbNEwYU4P=w583-h943-no?authuser=0",
+        "occupation": "Full Stack Web Developer",
+        "location": "Sanford, FL",
+        "hobbies": "Drawing, Music, and Riding Motorcycles"
+      },
+      {
+        "id": 4,
+        "name": "Luis Hernandez",
+        "image": "https://avatars.githubusercontent.com/u/70075112?s=400&u=0f6a17c31f0d4ac036db374c8633bcbc41190484&v=4",
+        "occupation": "Full Stack Web Developer",
+        "location": " Kissimmee, FL",
+        "hobbies": ""
+      }
+]

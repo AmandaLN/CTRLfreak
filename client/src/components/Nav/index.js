@@ -75,8 +75,8 @@ function Nav() {
          
           <div className="container mr-5">
 			<li className="nav-item">
-				{/* <Link style={buttonStyle} className=" btn btn-warning font-weight-bold" to="/public">About Us</Link>
-				<Link style={buttonStyle} className="btn btn-warning font-weight-bold" to="/protected">Budget</Link> */}
+				<Link style={buttonStyle} className=" btn btn-warning font-weight-bold" to="/public">About Us</Link>
+				<Link style={buttonStyle} className="btn btn-warning font-weight-bold" to="/protected">Budget</Link>
 				{user.username ? "" :
 				<Link style={buttonStyle} className="btn btn-white border border-primary font-weight-bold text-primary rounded-pill px-4" to="/register">Sign Up</Link>
 				}
