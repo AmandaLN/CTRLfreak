@@ -25,6 +25,7 @@ function App() {
 			<div>
 				<Nav className="App-header" />
 					<Switch>
+						<Route exact path="/" component={Welcome} />
 						<Route path="/public" component={Welcome} />
 						<Route path="/login" component={Login} />
 						<Route path="/register" component={Register} />
