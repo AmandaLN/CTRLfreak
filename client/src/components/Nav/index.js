@@ -1,3 +1,98 @@
+import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import "./nav.css";
+import Logo from "../logo";
+// import Login from "../LoginForm";
+import AuthButton from "../AuthButton";
+import { UserContext } from "../../utils/UserContext";
+
+import {
+  NavbarToggler
+} from "reactstrap";
+
+//I want to add some basic inline styling here, even though we are bringing in styles
+const buttonStyle = {
+  marginRight: 10
+};
+
+function Nav() {
+
+  const [user, dispatch] = useContext(UserContext);
+
+  const [open, setOpen] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const updateWidth = () => {
+    if (open && width > 991) {
+      setOpen(false);
+    }
+    setWidth(window.innerWidth)
+    // toggleNav()
+  };
+
+  const toggleNav = () => {
+    
+    setOpen(!open);
+    
+  };
+
+  useEffect(() => {
+
+    window.addEventListener("resize", updateWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    }
+  }, [])
+
+
+  return (
+    <nav className="navbar navbar-expand-lg navbar-dark bg-white mb-0">
+      <Link className="navbar-brand" to="/">
+       <Logo />
+        </Link>
+        <NavbarToggler onClick={toggleNav} />
+
+      <div className={`${open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
+        {user.username ? <span className="userText text-white ml-3 pt-1" to="#">Hi {user.username} !</span> : ""}
+        <ul className="navbar-nav ml-auto">
+        
+          {user.username ? 
+                  <li className="nav-item dropdown ">
+                  <a className="nav-link dropdown-toggle btn-secondary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Budgets
+                  </a>
+                  <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/subscriptions", type: "subscriptions", user: user.username}}>Subscriptions</Link>
+                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/utilities", type: "utilities", user: user.username}}>Utilities</Link>
+                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/groceries", type: "groceries", user: user.username}}>Groceries</Link>
+                  </div>
+                </li>
+
+                    :     
+
+            ""}
+         
+          <div className="container mr-5">
+			<li className="nav-item">
+				{/* <Link style={buttonStyle} className=" btn btn-warning font-weight-bold" to="/public">About Us</Link>
+				<Link style={buttonStyle} className="btn btn-warning font-weight-bold" to="/protected">Budget</Link> */}
+				{user.username ? "" :
+				<Link style={buttonStyle} className="btn btn-white border border-primary font-weight-bold text-primary rounded-pill px-4" to="/register">Sign Up</Link>
+				}
+				<AuthButton />
+			</li>
+		  </div>
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+export default Nav;
+
+
+
 // import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 // import {
@@ -76,92 +171,3 @@
 //   }
 // }
 // export default Nav1;
-
-import React, { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import "./nav.css";
-import Logo from "../logo";
-// import Login from "../LoginForm";
-import AuthButton from "../AuthButton";
-import { UserContext } from "../../utils/UserContext";
-
-import {
-  NavbarToggler
-} from "reactstrap";
-
-//I want to add some basic inline styling here, even though we are bringing in styles
-const buttonStyle = {
-  marginRight: 10
-};
-
-function Nav() {
-
-  const [user, dispatch] = useContext(UserContext);
-
-  const [open, setOpen] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
-
-  const updateWidth = () => {
-    if (open && width > 991) {
-      setOpen(false);
-    }
-    setWidth(window.innerWidth)
-    // toggleNav()
-  };
-
-  const toggleNav = () => {
-    
-    setOpen(!open);
-    
-  };
-
-  useEffect(() => {
-
-    window.addEventListener("resize", updateWidth);
-
-    return () => {
-      window.removeEventListener("resize", updateWidth);
-    }
-  }, [])
-
-
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-white mb-2">
-      <Link className="navbar-brand" to="/">
-       <Logo />
-        </Link>
-        <NavbarToggler onClick={toggleNav} />
-
-      <div className={`${open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
-        {user.username ? <span className="userText text-white ml-3 pt-1" to="#">Hi {user.username} !</span> : ""}
-        <ul className="navbar-nav ml-auto">
-        
-          {user.username ? 
-                  <li className="nav-item dropdown ">
-                  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Budgets
-                  </a>
-                  <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/subscriptions", type: "subscriptions", user: user.username}}>Subscriptions</Link>
-                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/utilities", type: "utilities", user: user.username}}>Utilities</Link>
-                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/groceries", type: "groceries", user: user.username}}>Groceries</Link>
-                  </div>
-                </li>
-            :
-            ""}
-         
-          <li className="nav-item ">
-            <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to="/public">About Us</Link>
-            <Link style={buttonStyle} className="btn btn-light font-weight-bold" to="/protected">Budget</Link>
-            {user.username ? "" :
-              <Link style={buttonStyle} className="btn btn-light font-weight-bold" to="/register">Register a New User</Link>
-            }
-            <AuthButton />
-          </li>
-        </ul>
-      </div>
-    </nav>
-  );
-}
-
-export default Nav;
