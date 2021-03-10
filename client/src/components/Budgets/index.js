@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Jumbotron from "../Jumbotron";
 import GroceryTable from "../GroceryTable";
+import { UserContext } from "../../utils/UserContext";
 import DeleteBtn from "../DeleteBtn";
 import Reports from "../Reports";
 import API from "../../utils/API";
@@ -15,7 +16,7 @@ let expensesTotal = 0;
 
  function Budgets() {
   // Setting our component's initial state
-
+  // const [user, dispatch] = useContext(UserContext);
   const [budgets, setBudgets] = useState([])
   const [formObject, setFormObject] = useState({
     title: "",
@@ -27,6 +28,7 @@ let expensesTotal = 0;
   
   // Load all books and store them with setBooks
    useEffect(() => {
+ 
     fetch('api/users/user', {
 			credentials: 'include'
 			})
@@ -45,6 +47,7 @@ let expensesTotal = 0;
 			.catch((err) => {
 				console.log('Error fetching authorized user.');
 			});
+  
   }, [])
 
   function formatDate(date){
@@ -58,9 +61,9 @@ let expensesTotal = 0;
 }
 
   // Loads all books and sets them to books
- function loadBudget(user) {
-    console.log(user, "budget user")
-    API.getId(user)
+ function loadBudget(userName) {
+    console.log(userName, "budget user")
+    API.getId(userName)
       .then(res => {
         console.log(res.data, "checking")
         if (res) {
