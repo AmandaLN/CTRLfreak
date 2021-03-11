@@ -6,7 +6,7 @@ const Hero2 = () => {
 					<br/>
 					<h1 className="display-1">Join today!</h1>
 					<h2 className="">Put the pen and paper away,</h2>
-					<h3 className="">save money and time.</h3>
+					<h3 className="">save time and money.</h3>
 					<p className="lead text-white">.</p>
 				</div>
 		</div>

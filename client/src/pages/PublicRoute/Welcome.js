@@ -22,7 +22,6 @@ const Welcome = () => {
 		// 	</>
 		// </>
 		<>
-		<Nav className="App-header" />
 		<Jumbotron/>
 		<Hero/>
 		<Hero1/>

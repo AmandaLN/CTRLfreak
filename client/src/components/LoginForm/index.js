@@ -10,7 +10,7 @@ function LoginForm({ onLogin }) {
 	const passwordRef = useRef();
 
 	return (
-		<div className="container" style={{width: 450, marginTop: 200 }}>
+		<div className="container" style={{width: 450, marginTop: 100 }}>
 			<Card title="CTRLfreak">
 			<form id="formz"
 				ref={formRef}
