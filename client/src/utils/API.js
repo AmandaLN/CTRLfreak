@@ -10,9 +10,9 @@ export default {
     console.log(id, "getbudget")
     return axios.get("/api/budget/" + id);
   },
-  getExpensesbyType: function(type, activeUser) {
-    console.log(type, "getbudget by type")
-    return axios.put("/api/budget/expenses/" + type, activeUser);
+  getExpensesbyType: function(activeUser) {
+    // console.log(type, "getbudget by type")
+    return axios.put("/api/budget/expenses/", activeUser);
   },
   getInventory: function(type, activeUser) {
     console.log(type, "getbudget by type")

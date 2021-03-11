@@ -76,7 +76,6 @@ const AddGroceryModal = ({typeLocation, user, getInventory}) => {
 			.then(() => getInventory(user))
 			.catch(err => console.log(err));
 		}
-
 	  };
 
   return (
@@ -161,7 +160,7 @@ const AddGroceryModal = ({typeLocation, user, getInventory}) => {
 			  <FormBtn
                 disabled={!(formObject.title)}
                 onClick={handleFormSubmit}
-				data-dismiss="modal"
+				      data-dismiss="modal"
               >
                 Submit Item
               </FormBtn>

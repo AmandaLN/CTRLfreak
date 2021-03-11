@@ -8,7 +8,7 @@ router.route("/")
 
   // Matches with "/api/budget/expenses/:type"
 
-  router.route("/expenses/:type")
+  router.route("/expenses/")
   .put(budgetController.findType)
 
    // Matches with "/api/budget/inventory/:type"

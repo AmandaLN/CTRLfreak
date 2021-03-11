@@ -12,8 +12,7 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   findType: function (req, res) {
-    console.log(req.params.type, "type");
-    console.log(req.body, "tyuserpe");
+    console.log(req.body, "userbudget controller findtype");
     db.Budget.aggregate([
       {$match: {user : req.body.user}}, 
       {$unwind: { path: "$expenses", preserveNullAndEmptyArrays: true}}, 
@@ -23,8 +22,8 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   findInventory: function (req, res) {
-    console.log(req.params.type, "type");
-    console.log(req.body, "user");
+    console.log(req.params.type, "type find inventory budget controller");
+    console.log(req.body, "user find inventory budget controller");
     console.log(req.params)
     db.Budget.aggregate([
       {$unwind: '$expenses'},

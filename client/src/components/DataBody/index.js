@@ -21,8 +21,15 @@ const DataBody = ({users}) => {
 		<tbody>
         {users[0] !== undefined && users[0].user !== undefined ? (
           users.map((user) => {
+			function dateDif(date1, date2){
+				return Math.round((date2-date1)/(1000*60*60*24));
+				}
+			  var daysDiff = dateDif(new Date(Date.now()), new Date(formatDate(user.expenses.expires)));
+			  let color = "";
+			  if (daysDiff <= 3) color = "text-warning"
+			  if (daysDiff <= 0) color = "text-danger"
             return (
-              <tr key={user.expenses.title}>
+              <tr key={user.expenses.title} className={color}>
                   <td data-th="Title" className="name-cell align-middle">
                   {user.expenses.title}
                 </td>

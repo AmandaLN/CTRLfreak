@@ -14,6 +14,7 @@ let dataBar = {};
 let valueGroceries = 0;
 let valueUtilities = 0;
 let valueSubscriptions = 0;
+import DataTable from "../../components/DataTable";
 
 let Pie1,
   Pie2,
@@ -35,6 +36,13 @@ function Reports({ budgets, expensesTotal }) {
   const buttonStyle = {
     marginRight: 10
   };
+  const headings = [
+    { name: "Title", width: "10%" },
+    { name: "Quantity", width: "10%" },
+    { name: "Expires/DueDate", width: "20%" },
+    { name: "Cost", width: "20%" },
+    { name: "Type", width: "10%" },
+  ];
 
   // Load all books and store them with setBooks
   useEffect(() => {
@@ -66,7 +74,7 @@ function Reports({ budgets, expensesTotal }) {
     valueSubscriptions = 0;
      totalExpenses = 0;
     console.log(userName, "username");
-    await  API.getExpensesbyType("Groceries", userName)
+    await  API.getExpensesbyType(userName)
       .then(async (res) => {
         console.log("nada");
         if (res) {
@@ -227,7 +235,9 @@ function Reports({ budgets, expensesTotal }) {
   }
 
   return (
+
     <div className="container mt-5">
+
       <Row>
         <Col size="md-12">
           <h1 className="text-center">Reports</h1>
@@ -257,7 +267,7 @@ function Reports({ budgets, expensesTotal }) {
                   <Col size="md-4">
                     <div className="header">
                       <h3 className="title">{typeGraph._id}</h3>
-                      <div className="links">
+                      {/* <div className="links">
                       <Link key={typeGraph._id}style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/" + typeGraph._id, type: typeGraph._id, user: user.username}}>Subscriptions</Link>
                         <a
                           className="btn btn-gh"
@@ -265,7 +275,7 @@ function Reports({ budgets, expensesTotal }) {
                         >
                          {typeGraph._id} Page
                         </a>
-                      </div>
+                      </div> */}
                     </div>
                     <Pie key={typeGraph._id} data={back} />
                   </Col>
@@ -282,26 +292,69 @@ function Reports({ budgets, expensesTotal }) {
           <h3 className="text-right ">Most Recent Expenses</h3>
           <HR />
         </Col>
-
         <Col size="md-12">
-          {/* Table need to be a little bit more up */}
-          {budgets.map((budget) => {
+        <div className="datatable mt-5">
+            <table id="table" className="table table-striped table-hover">
+            <thead>
+                <tr>
+                    {headings.map(({name, width}) => {
+                        return (
+                            <th 
+                            className="col" 
+                            key={name} 
+                            style={{width}}
+                            >
+                            {name}
+                            <span className="pointer"></span>
+                            </th>
+                        );
+                    })}
+                </tr>
+                </thead>
+                <tbody>
+        {budgets[0] !== undefined? (
+          budgets.map((user) => {
+			function dateDif(date1, date2){
+				return Math.round((date2-date1)/(1000*60*60*24));
+				}
+			  var daysDiff = dateDif(new Date(Date.now()), new Date(formatDate(user.expires)));
+			  let color = "";
+			  if (daysDiff <= 3) color = "text-warning"
+			  if (daysDiff <= 0) color = "text-danger"
             return (
-              <ListItem key={budget._id}>
-                <a href={"/budgets/" + budget._id}>
-                  <strong>
-                    title : {budget.title} type: {budget.type} cost:{" "}
-                    {budget.cost} expires: {formatDate(budget.expires)}
-                  </strong>
-                </a>
-              </ListItem>
+              <tr key={user.title} className={color}>
+                  <td data-th="Title" className="name-cell align-middle">
+                  {user.title}
+                </td>
+                <td data-th="Quantity" className="align-middle">
+                  {user.quantity}
+                </td>
+				<td data-th="Expires/DueDate" className="align-middle">
+                  {formatDate(user.expires)}
+                </td>
+                <td data-th="Cost" className="align-middle">
+                    {user.cost}
+                </td>
+				<td data-th="Type" className="align-middle">
+                    {user.type}
+                </td>
+              
+              </tr>
             );
-          })}
+          })
+        ) : (
+          <></>
+        )}
+      </tbody>
+            </table>
+        </div>
+        
         </Col>
       </Row>
-      <Row>
-       
-      </Row>
+      <DataTable
+            headings={headings}
+            users={budgets}
+          />
     </div>
   );
 }
