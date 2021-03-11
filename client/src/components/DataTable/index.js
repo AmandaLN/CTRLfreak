@@ -59,7 +59,7 @@ console.log(users, "this is the right none")
 
 		// </div>
 
-<div className="datatable mt-5">
+<div className="datatable">
             <table id="table" className="table table-striped table-hover">
             <thead>
                 <tr>

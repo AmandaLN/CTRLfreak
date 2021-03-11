@@ -139,7 +139,7 @@ function Inventory() {
 
   return (
     <>
-      <div className="container">
+      <div className="container text-center">
         <SearchHeader handleSearchChange={handleSearchChange} user={userLocation} typeLocation={typeLocation} getInventory={getInventory}/>
        <DataTable
             headings={headings}

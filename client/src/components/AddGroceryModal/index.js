@@ -96,7 +96,7 @@ const AddGroceryModal = ({typeLocation, user, getInventory}) => {
       >
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
-            <div className="modal-header bg-success text-light">
+            <div className="modal-header bg-primary text-light">
               <h5 className="modal-title" id="exampleModalLongTitle">
                 New Item
               </h5>
