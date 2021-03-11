@@ -48,7 +48,7 @@ function Nav() {
 
   return (
 
-    <nav className="navbar navbar-expand-lg navbar-dark bg-info mb-2">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-info mb-0">
 
       <Link className="navbar-brand" to="/">
        <Logo />
