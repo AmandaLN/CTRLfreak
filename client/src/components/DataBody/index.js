@@ -1,9 +1,11 @@
 import EditExpenseModal from "../EditExpenseModal";
 import React from "react";
 import "./style.css";
-
-
-const DataBody = ({users}) => {
+import DeleteBtn from "../DeleteBtn";
+let deleteUser = {
+    user: ""
+}
+const DataBody = ({users, deleteBudget}) => {
 
 	console.log(users, "users en databody")
 	function formatDate(date){
@@ -21,6 +23,7 @@ const DataBody = ({users}) => {
 		<tbody>
         {users[0] !== undefined && users[0].user !== undefined ? (
           users.map((user) => {
+			  deleteUser.user = user.user
 			function dateDif(date1, date2){
 				return Math.round((date2-date1)/(1000*60*60*24));
 				}
@@ -43,9 +46,9 @@ const DataBody = ({users}) => {
                     {user.expenses.cost}
                 </td>
 				<td data-th="Type" className="align-middle">
-                    {user.expenses.type}
+                    {user.expenses.type} <DeleteBtn onClick={() => deleteBudget(user.expenses._id, deleteUser)} />
                 </td>
-              
+				
               </tr>
             );
           })
