@@ -54,12 +54,12 @@ function Nav() {
        <Logo />
         </Link>
         <NavbarToggler onClick={toggleNav} />
-
       <div className={`${open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
-        {user.username ? <span className="userText text-white ml-3 pt-1" to="#">Hi {user.username} !</span> : ""}
+        {user.username ? <span className="userText text-primary ml-3 pt-1" to="#">Hi {user.username} !</span> : ""}
         <ul className="navbar-nav ml-auto">
         
           {user.username ? 
+        
                   <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle text-white font-weight-bold btn btn-primary rounded-pill px-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Itemization
@@ -70,15 +70,12 @@ function Nav() {
                     <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/groceries", type: "groceries", user: user.username}}>Groceries</Link>
                   </div>
                 </li>
-
                     :     
-
             ""}
-         
           <div className="container mr-5">
-			<li className="nav-item">
-				{/* <Link style={buttonStyle} className=" btn btn-warning font-weight-bold" to="/public">About Us</Link>
-				<Link style={buttonStyle} className="btn btn-warning font-weight-bold" to="/protected">Budget</Link> */}
+			  <li className="nav-item">
+				<Link style={buttonStyle} className=" btn btn-warning font-weight-bold" to="/public">About Us</Link>
+		    <Link style={buttonStyle} className="btn btn-warning font-weight-bold" to="/protected">Budget</Link>
 				{user.username ? "" :
 				<Link style={buttonStyle} className="btn btn-white border border-primary font-weight-bold text-primary rounded-pill px-4" to="/register">Sign Up</Link>
 				}

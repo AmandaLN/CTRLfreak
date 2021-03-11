@@ -10,6 +10,7 @@ import DataTable from "../../components/DataTable";
 import ExpenseTable from "../../components/DataBody";
 let activeUser;
 let budgetInventory = [];
+let filterBudget = []
  let typeLocation ;
  let userLocation;
 
@@ -77,6 +78,7 @@ function Inventory() {
          console.log(res.data, "inventory inventory");
      console.log(res.data[0].expenses.title, "checking expenses title")
      budgetInventory = res.data
+     filterBudget = res.data
      console.log(budgetInventory, "budget inventory")
          setExpenses(...budget, res.data[0].expenses);
          setFilteredBudget(...filteredBudget, res.data[0].expenses);
@@ -91,12 +93,13 @@ function Inventory() {
   function handleSearchChange(event) {
     const filter = event.target.value;
     console.log(filter, "filter")
+    console.log(budgetInventory, "filter inventory")
     const filteredList = budgetInventory.filter((item) => {
       console.log(item, "item")
-      let values = Object.values(item).join("").toLowerCase();
+      let values = Object.values(item.expenses).join("").toLowerCase();
       return values.indexOf(filter.toLowerCase()) !== -1;
     });
-
+    filterBudget = filteredList
     setFilteredBudget({...filteredBudget, filteredList});
   }
 
@@ -143,7 +146,7 @@ function Inventory() {
         <SearchHeader handleSearchChange={handleSearchChange} user={userLocation} typeLocation={typeLocation} getInventory={getInventory}/>
        <DataTable
             headings={headings}
-            users={budgetInventory}
+            users={filterBudget}
             handleSort={handleSort}
           />
       </div>
