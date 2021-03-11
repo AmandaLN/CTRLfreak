@@ -53,7 +53,7 @@ function Nav() {
       <Link className="navbar-brand" to="/">
        <Logo />
         </Link>
-        <NavbarToggler onClick={toggleNav} />
+        <NavbarToggler onClick={toggleNav} className="bg-primary"/>
       <div className={`${open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
         {user.username ? <span className="userText text-primary ml-3 pt-1" to="#">Hi {user.username} !</span> : ""}
         <ul className="navbar-nav ml-auto">
