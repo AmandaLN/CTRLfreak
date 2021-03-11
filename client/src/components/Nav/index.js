@@ -48,7 +48,7 @@ function Nav() {
 
   return (
 
-    <nav className="navbar navbar-expand-lg navbar-dark bg-info mb-0">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow p-3 bg-white rounded mb-0">
 
       <Link className="navbar-brand" to="/">
        <Logo />
@@ -60,9 +60,9 @@ function Nav() {
         <ul className="navbar-nav ml-auto">
         
           {user.username ? 
-                  <li className="nav-item dropdown ">
-                  <a className="nav-link dropdown-toggle btn-secondary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Budgets
+                  <li className="nav-item dropdown">
+                  <a className="nav-link dropdown-toggle text-white font-weight-bold btn btn-primary rounded-pill px-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Itemization
                   </a>
                   <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                     <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/subscriptions", type: "subscriptions", user: user.username}}>Subscriptions</Link>
@@ -77,8 +77,8 @@ function Nav() {
          
           <div className="container mr-5">
 			<li className="nav-item">
-				<Link style={buttonStyle} className=" btn btn-warning font-weight-bold" to="/public">About Us</Link>
-				<Link style={buttonStyle} className="btn btn-warning font-weight-bold" to="/protected">Budget</Link>
+				{/* <Link style={buttonStyle} className=" btn btn-warning font-weight-bold" to="/public">About Us</Link>
+				<Link style={buttonStyle} className="btn btn-warning font-weight-bold" to="/protected">Budget</Link> */}
 				{user.username ? "" :
 				<Link style={buttonStyle} className="btn btn-white border border-primary font-weight-bold text-primary rounded-pill px-4" to="/register">Sign Up</Link>
 				}

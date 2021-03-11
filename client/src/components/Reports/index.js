@@ -227,7 +227,7 @@ function Reports({ budgets, expensesTotal }) {
   }
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <Row>
         <Col size="md-12">
           <h1 className="text-center">Reports</h1>
