@@ -141,8 +141,6 @@ function Inventory() {
     <>
       <div className="container">
         <SearchHeader handleSearchChange={handleSearchChange} user={userLocation} typeLocation={typeLocation} getInventory={getInventory}/>
-       <h1>{typeLocation}</h1>
-       <h2>{locationPage}</h2>
        <DataTable
             headings={headings}
             users={budgetInventory}

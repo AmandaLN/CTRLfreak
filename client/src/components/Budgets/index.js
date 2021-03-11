@@ -8,7 +8,7 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import { Input, TextArea, FormBtn } from "../Form";
-let activeUser
+let activeUser = ""
 let deleteUser = {
     user: ""
 }

@@ -6,7 +6,7 @@ import DataBody from "../DataBody";
 import "./style.css";
 import Moment from 'react-moment'
 
-const GroceryTable = ({users, headings, handleSort}) => {
+const GroceryTable = ({users, headings}) => {
 console.log(users, "this is the right none")
 	// function formatDate(date){
 	// 	const dateArray = date.split("-");
@@ -69,9 +69,7 @@ console.log(users, "this is the right none")
                             className="col" 
                             key={name} 
                             style={{width}}
-                            onClick = {() => {
-                                handleSort(name.toLowerCase());
-                            }}
+                        
                             >
                             {name}
                             <span className="pointer"></span>
