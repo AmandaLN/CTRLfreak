@@ -30,11 +30,14 @@ Passport
 PWA
 
 ## Usage
-![Login](./client/public/assets/images/login2.png)
-![Register](./client/public/assets/images/register.png)
-![]()
-![]()
-![]()
+![home](./client/public/assets/images/home.png)
+![create](./client/public/assets/images/create.png)
+![login](./client/public/assets/images/login.png)
+![report](./client/public/assets/images/reports.png)
+![reports](./client/public/assets/images/reports2.png)
+![subscriptions](./client/public/assets/images/subtable.png)
+![utilities](./client/public/assets/images/utilities.png)
+![groceries](./client/public/assets/images/groceries.png)
 
 ## Maintainers
 Amanda Nelson
