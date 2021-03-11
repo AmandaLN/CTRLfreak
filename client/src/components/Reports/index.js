@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { defaults,  Bar, Pie } from "react-chartjs-2";
+import { defaults, Bar, Pie } from "react-chartjs-2";
 import { Col, Row } from "../Grid";
 import HR from "../HR";
 import { List, ListItem } from "../List";
@@ -34,7 +34,7 @@ function Reports({ budgets, expensesTotal }) {
   // const [dataBar, setDataBar] = useState({})
 
   const buttonStyle = {
-    marginRight: 10
+    marginRight: 10,
   };
   const headings = [
     { name: "Title", width: "10%" },
@@ -46,7 +46,6 @@ function Reports({ budgets, expensesTotal }) {
 
   // Load all books and store them with setBooks
   useEffect(() => {
-
     console.log("useEffect");
     fetch("api/users/user", {
       credentials: "include",
@@ -70,11 +69,11 @@ function Reports({ budgets, expensesTotal }) {
       user: data.username,
     };
     valueGroceries = 0;
-     valueUtilities = 0;
+    valueUtilities = 0;
     valueSubscriptions = 0;
-     totalExpenses = 0;
+    totalExpenses = 0;
     console.log(userName, "username");
-    await  API.getExpensesbyType(userName)
+    await API.getExpensesbyType(userName)
       .then(async (res) => {
         console.log("nada");
         if (res) {
@@ -83,7 +82,7 @@ function Reports({ budgets, expensesTotal }) {
 
           await res.data.map(async (type) => {
             console.log(type._id);
-            
+
             if (type._id === "groceries") {
               totalExpenses += type.totalType;
               valueGroceries += type.totalType;
@@ -134,16 +133,16 @@ function Reports({ budgets, expensesTotal }) {
             totalExpenses,
           ],
           backgroundColor: [
-        'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(255, 159, 64, 1)',
+            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(255, 159, 64, 1)",
           ],
           borderColor: [
-        'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(255, 159, 64, 1)',
+            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(255, 159, 64, 1)",
           ],
           borderWidth: 1,
         },
@@ -156,11 +155,8 @@ function Reports({ budgets, expensesTotal }) {
         {
           label: ["Groceries", "Total"],
           data: [valueGroceries, totalExpenses],
-          backgroundColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(255, 159, 64, 1)',
-          ],
-          borderColor: ['rgba(255, 99, 132, 1)',    'rgba(255, 159, 64, 1)'],
+          backgroundColor: ["rgba(255, 99, 132, 1)", "rgba(255, 159, 64, 1)"],
+          borderColor: ["rgba(255, 99, 132, 1)", "rgba(255, 159, 64, 1)"],
           //   'rgba(255, 99, 132, 1)',
           //   'rgba(54, 162, 235, 1)',
           //   'rgba(255, 206, 86, 1)',
@@ -180,11 +176,8 @@ function Reports({ budgets, expensesTotal }) {
         {
           label: ["Utilities", "Total"],
           data: [valueUtilities, totalExpenses],
-          backgroundColor: [
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 159, 64, 1)',
-          ],
-          borderColor: ['rgba(54, 162, 235, 1)',    'rgba(255, 159, 64, 1)'],
+          backgroundColor: ["rgba(54, 162, 235, 1)", "rgba(255, 159, 64, 1)"],
+          borderColor: ["rgba(54, 162, 235, 1)", "rgba(255, 159, 64, 1)"],
           //   'rgba(255, 99, 132, 1)',
           //   'rgba(54, 162, 235, 1)',
           //   'rgba(255, 206, 86, 1)',
@@ -204,11 +197,8 @@ function Reports({ budgets, expensesTotal }) {
         {
           label: ["Subscriptions", "Total"],
           data: [valueSubscriptions, totalExpenses],
-          backgroundColor: [
-            'rgba(255, 206, 86, 1)',
-            'rgba(255, 159, 64, 1)',
-          ],
-          borderColor: ['rgba(255, 206, 86, 1)',    'rgba(255, 159, 64, 1)'],
+          backgroundColor: ["rgba(255, 206, 86, 1)", "rgba(255, 159, 64, 1)"],
+          borderColor: ["rgba(255, 206, 86, 1)", "rgba(255, 159, 64, 1)"],
           //   'rgba(255, 99, 132, 1)',
           //   'rgba(54, 162, 235, 1)',
           //   'rgba(255, 206, 86, 1)',
@@ -223,7 +213,6 @@ function Reports({ budgets, expensesTotal }) {
     };
   }
 
-
   function formatDate(date) {
     const dateArray = date.split("-");
     const year = dateArray[0];
@@ -235,15 +224,18 @@ function Reports({ budgets, expensesTotal }) {
   }
 
   return (
-
     <div className="container mt-5">
-
       <Row>
         <Col size="md-12">
-          <h1 className="text-center text-primary font-weight-bold" style={{fontSize: 72}}>Report</h1>
+          <h1
+            className="text-center text-primary font-weight-bold"
+            style={{ fontSize: 72 }}
+          >
+            Report
+          </h1>
         </Col>
-		<HR/>
-		<HR/>
+        <HR />
+        <HR />
         <Col size="md-12">
           <h3 className="text-center font-italic mt-5">Monthly Breakdown</h3>
         </Col>
@@ -289,69 +281,84 @@ function Reports({ budgets, expensesTotal }) {
           <h3 className="text-center font-italic">Most Recent Expenses</h3>
         </Col> */}
         <Col size="md-12">
-        <div className="datatable">
-		<h3 className="text-center font-italic">Recent Expense</h3>
-            <table id="table" className="table table-striped table-hover text-center border">
-            <thead className="bg-primary text-white text-center">
+          <div className="datatable">
+            <h3 className="text-center font-italic">Recent Expense</h3>
+            <table
+              id="table"
+              className="table table-striped table-hover text-center border"
+            >
+              <thead className="bg-primary text-white text-center">
                 <tr>
-                    {headings.map(({name, width}) => {
-                        return (
-                            <th 
-                            className="col" 
-                            key={name} 
-                            style={{width}}
-                            >
-                            {name}
-                            <span className="pointer"></span>
-                            </th>
-                        );
-                    })}
+                  {headings.map(({ name, width }) => {
+                    return (
+                      <th className="col" key={name} style={{ width }}>
+                        {name}
+                        <span className="pointer"></span>
+                      </th>
+                    );
+                  })}
                 </tr>
-                </thead>
-                <tbody>
-        {budgets[0] !== undefined? (
-          budgets.map((user) => {
-			function dateDif(date1, date2){
-				return Math.round((date2-date1)/(1000*60*60*24));
-				}
-			  var daysDiff = dateDif(new Date(Date.now()), new Date(formatDate(user.expires)));
-			  let color = "";
-			  if (daysDiff <= 3) color = "bg-warning font-weight-bold text-black"
-			  if (daysDiff <= 0) color = "bg-danger font-weight-bold text-white"
-            return (
-              <tr key={user.title} className={color}>
-                  <td data-th="Title" className="name-cell align-middle">
-                  {user.title}
-                </td>
-                <td data-th="Quantity" className="align-middle">
-                  {user.quantity}
-                </td>
-				<td data-th="Expires/DueDate" className="align-middle">
-                  {formatDate(user.expires)}
-                </td>
-                <td data-th="Cost" className="align-middle">
-                    {user.cost}
-                </td>
-				<td data-th="Type" className="align-middle">
-                    {user.type}
-                </td>
-              
-              </tr>
-            );
-          })
-        ) : (
-          <></>
-        )}
-      </tbody>
+              </thead>
+              <tbody>
+                {budgets[0] !== undefined ? (
+                  budgets.map((user) => {
+                    function dateDif(date1, date2) {
+                      return Math.round(
+                        (date2 - date1) / (1000 * 60 * 60 * 24)
+                      );
+                    }
+                    var daysDiff = dateDif(
+                      new Date(Date.now()),
+                      new Date(formatDate(user.expires))
+                    );
+                    let color = "";
+                    if (daysDiff <= 3)
+                      color = "bg-warning font-weight-bold text-black";
+                    if (daysDiff <= 0)
+                      color = "bg-danger font-weight-bold text-white";
+                    return (
+                      <tr key={user.title} className={color}>
+                        <td data-th="Title" className="name-cell align-middle">
+                          {user.title}
+                        </td>
+                        <td data-th="Quantity" className="align-middle">
+                          {user.quantity}
+                        </td>
+                        <td data-th="Expires/DueDate" className="align-middle">
+                          {formatDate(user.expires)}
+                        </td>
+                        <td data-th="Cost" className="align-middle">
+                          {user.cost}
+                        </td>
+                        <td data-th="Type" className="align-middle">
+                          {user.type}
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <></>
+                )}
+                <tr>
+                  <td data-th="Title" className="align-middle font-weight-bold">
+                    Total:
+                  </td>
+                  <td data-th="Title" className="align-middle"></td>
+                  <td data-th="Title" className="align-middle"></td>
+                  <td data-th="Total" className="align-middle font-weight-bold">
+                    {totalExpenses}
+                  </td>
+                  <td data-th="Title" className="align-middle "></td>
+                </tr>
+              </tbody>
             </table>
-        </div>
-        
+          </div>
         </Col>
       </Row>
-	  <br/>
-	  <br/>
-	  <br/>
-	 
+      <br />
+      <br />
+      <br />
+
       {/* <DataTable
             headings={headings}
             users={budgets}

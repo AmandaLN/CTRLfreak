@@ -65,9 +65,9 @@ function Nav() {
                     Itemization
                   </a>
                   <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/subscriptions", type: "subscriptions", user: user.username}}>Subscriptions</Link>
-                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/utilities", type: "utilities", user: user.username}}>Utilities</Link>
-                    <Link style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/groceries", type: "groceries", user: user.username}}>Groceries</Link>
+                    <Link style={buttonStyle} className=" btn btn-white font-weight-bold" to={{pathname: "/inventory/subscriptions", type: "subscriptions", user: user.username}}>Subscriptions</Link>
+                    <Link style={buttonStyle} className=" btn btn-white font-weight-bold" to={{pathname: "/inventory/utilities", type: "utilities", user: user.username}}>Utilities</Link>
+                    <Link style={buttonStyle} className=" btn btn-white font-weight-bold" to={{pathname: "/inventory/groceries", type: "groceries", user: user.username}}>Groceries</Link>
                   </div>
                 </li>
                     :     

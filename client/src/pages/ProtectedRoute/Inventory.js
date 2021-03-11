@@ -86,9 +86,14 @@ function Inventory() {
          console.log(budget, filteredBudget, "trying budget and filtered")
        })
        .catch((err) => console.log(err));
-      
-      
+     
+  }
 
+  function deleteBudget(id, username) {
+   
+    API.deleteBudget(id, username)
+      .then(res => getInventory(typeLocation, username))
+      .catch(err => console.log(err));
   }
 
   function handleSearchChange(event) {
@@ -150,6 +155,7 @@ function Inventory() {
             headings={headings}
             users={filterBudget}
             handleSort={handleSort}
+            deleteBudget={deleteBudget}
           />
       </div>
     </>

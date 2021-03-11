@@ -6,7 +6,7 @@ import DataBody from "../DataBody";
 import "./style.css";
 import Moment from 'react-moment'
 
-const GroceryTable = ({users, headings}) => {
+const GroceryTable = ({users, headings, deleteBudget}) => {
 console.log(users, "this is the right none")
 	// function formatDate(date){
 	// 	const dateArray = date.split("-");
@@ -78,7 +78,7 @@ console.log(users, "this is the right none")
                     })}
                 </tr>
                 </thead>
-                    <DataBody users={users} />
+                    <DataBody users={users} deleteBudget={deleteBudget}/>
             </table>
         </div>
 
