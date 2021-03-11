@@ -12,7 +12,7 @@ const AuthButton = () => {
 
 	return (
 		Auth.isAuthenticated ? (
-			<button className="btn btn-danger"
+			<button className="btn btn-white text-primary font-weight-bold border border-primary rounded-pill px-5 border" 
 				onClick={() => {
 					Auth.signout(() => history.push('/login'))
 					dispatch({

@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { UserContext } from "../../utils/UserContext";
+import Nav from "../../components/Nav"
 import Budgets from "../../components/Budgets"
 
 
@@ -34,6 +35,7 @@ function Budget() {
 
 	return (
 		<>
+			<Nav className="App-header" />
 			<Budgets />
 		</>
 	)

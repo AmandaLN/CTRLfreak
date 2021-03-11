@@ -10,7 +10,7 @@ function RegisterForm({ onRegister }) {
 	const passwordRef = useRef();
 
 	return (
-		<div className="container" style={{width: 450, marginTop: 50 }}>
+		<div className="container" style={{width: 450, marginTop: 100 }}>
 			<Card title="Create account">
 			<form
 				ref={formRef}

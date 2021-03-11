@@ -5,9 +5,9 @@ import Col from "../Col";
 
 function Footer() {
   return (
-    <footer className="footer-dark bg-dark bg-info text-light fixed-bottom">
+    <footer className="footer-dark bg-light text-dark fixed-bottom">
 
-      <div className="d-flex align-items-center pt-3">
+      <div className="d-flex align-items-center pt-0">
 
         <Col size="md-2" >Amanda
 
