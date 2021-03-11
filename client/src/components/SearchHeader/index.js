@@ -7,16 +7,16 @@ import React from "react";
 const SearchHeader = ({handleSearchChange, typeLocation, user, getInventory}) => {
 	return (
 		
-		<div className="container text-center">
+		<div className="container text-center mt-5">
 			<Row>
 				<Col size="md-4">
-					<h5 className="text-success font-weight-bold">Inventory</h5>
+					<h5 className="text-primary font-weight-bold">Inventory</h5>
 				</Col>
 				<Col size="md-4">
 					<h5 className="">Manage</h5>
 				</Col>
 				<Col size="md-4">
-					<h5 className="text-success"><AddGroceryModal typeLocation={typeLocation} user={user} getInventory={getInventory}/></h5>
+					<h5 className="text-primary"><AddGroceryModal typeLocation={typeLocation} user={user} getInventory={getInventory}/></h5>
 				</Col>
 			</Row>
 			<Row>
