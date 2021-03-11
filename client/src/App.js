@@ -24,7 +24,7 @@ function App() {
 		<UserProvider>
 		<Router>
 			<div>
-				<Nav className="App-header" />
+				
 					<Switch>
 						<Route exact path="/" component={Welcome} />
 						<Route path="/public" component={AboutUs} />

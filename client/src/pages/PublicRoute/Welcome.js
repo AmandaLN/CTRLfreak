@@ -1,4 +1,5 @@
 import React from "react";
+import Nav from "../../components/Nav"
 import Hero from "../../components/Hero";
 import Hero1 from "../../components/Hero1";
 import Hero2 from "../../components/Hero2";
@@ -21,6 +22,7 @@ const Welcome = () => {
 		// 	</>
 		// </>
 		<>
+		<Nav className="App-header" />
 		<Jumbotron/>
 		<Hero/>
 		<Hero1/>
