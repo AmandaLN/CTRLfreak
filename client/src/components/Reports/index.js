@@ -289,10 +289,10 @@ function Reports({ budgets, expensesTotal }) {
           <h3 className="text-center font-italic">Most Recent Expenses</h3>
         </Col> */}
         <Col size="md-12">
-        <div className="datatable mt-5">
+        <div className="datatable">
 		<h3 className="text-center font-italic">Most Recent Expenses</h3>
             <table id="table" className="table table-striped table-hover text-center border">
-            <thead>
+            <thead className="bg-primary text-white text-center">
                 <tr>
                     {headings.map(({name, width}) => {
                         return (
@@ -316,8 +316,8 @@ function Reports({ budgets, expensesTotal }) {
 				}
 			  var daysDiff = dateDif(new Date(Date.now()), new Date(formatDate(user.expires)));
 			  let color = "";
-			  if (daysDiff <= 3) color = "text-warning"
-			  if (daysDiff <= 0) color = "text-danger"
+			  if (daysDiff <= 3) color = "bg-warning text-black"
+			  if (daysDiff <= 0) color = "bg-danger text-white"
             return (
               <tr key={user.title} className={color}>
                   <td data-th="Title" className="name-cell align-middle">
@@ -348,10 +348,14 @@ function Reports({ budgets, expensesTotal }) {
         
         </Col>
       </Row>
-      <DataTable
+	  <br/>
+	  <br/>
+	  <br/>
+	 
+      {/* <DataTable
             headings={headings}
             users={budgets}
-          />
+          /> */}
     </div>
   );
 }
