@@ -1,8 +1,10 @@
 import AddExpenseModal from "../AddExpenseModal"
 import AddGroceryModal from "../AddGroceryModal"
 import { Col, Row, Container } from "../Grid";
+import React from "react";
 
-const SearchHeader = ({handleSearchChange}) => {
+
+const SearchHeader = ({handleSearchChange, typeLocation, user, getInventory}) => {
 	return (
 		
 		<div className="container text-center">
@@ -14,7 +16,7 @@ const SearchHeader = ({handleSearchChange}) => {
 					<h5 className="">Manage</h5>
 				</Col>
 				<Col size="md-4">
-					<h5 className="text-success"><AddGroceryModal /></h5>
+					<h5 className="text-success"><AddGroceryModal typeLocation={typeLocation} user={user} getInventory={getInventory}/></h5>
 				</Col>
 			</Row>
 			<Row>
