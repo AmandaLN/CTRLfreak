@@ -63,27 +63,35 @@ function Inventory() {
         user: userLocation,
       };
       
-       API.getInventory(typeLocation, username)
-        .then((res) => {
-          console.log(res.data, "inventory inventory");
-      console.log(res.data[0].expenses.title, "checking expenses title")
-      budgetInventory = res.data
-          setExpenses(...budget, res.data[0].expenses);
-          setFilteredBudget(...filteredBudget, res.data[0].expenses);
-          console.log(budget, filteredBudget, "trying budget and filtered")
-        })
-        .catch((err) => console.log(err));
+      getInventory(typeLocation, username)
+      // getTypeInventory(userLocation);
+      
+    }, [typeLocation]);
+    // filters the table while you are typing in search
+    
+    
+    function getInventory(typeLocation, username){
+      
+      API.getInventory(typeLocation, username)
+       .then((res) => {
+         console.log(res.data, "inventory inventory");
+     console.log(res.data[0].expenses.title, "checking expenses title")
+     budgetInventory = res.data
+     console.log(budgetInventory, "budget inventory")
+         setExpenses(...budget, res.data[0].expenses);
+         setFilteredBudget(...filteredBudget, res.data[0].expenses);
+         console.log(budget, filteredBudget, "trying budget and filtered")
+       })
+       .catch((err) => console.log(err));
+      
+      
 
-	// getTypeInventory(userLocation);
-
-  }, [typeLocation]);
-  // filters the table while you are typing in search
-
+  }
 
   function handleSearchChange(event) {
     const filter = event.target.value;
     console.log(filter, "filter")
-    const filteredList = budget.filter((item) => {
+    const filteredList = budgetInventory.filter((item) => {
       console.log(item, "item")
       let values = Object.values(item).join("").toLowerCase();
       return values.indexOf(filter.toLowerCase()) !== -1;
@@ -132,7 +140,7 @@ function Inventory() {
   return (
     <>
       <div className="container">
-        <SearchHeader handleSearchChange={handleSearchChange}/>
+        <SearchHeader handleSearchChange={handleSearchChange} user={userLocation} typeLocation={typeLocation} getInventory={getInventory}/>
        <h1>{typeLocation}</h1>
        <h2>{locationPage}</h2>
        <DataTable

@@ -118,53 +118,7 @@ let expensesTotal = 0;
       <Container fluid>
         <Row>
           <Col size="md-6">
-            <Jumbotron>
-              <h1>Add Budget</h1>
-            </Jumbotron>
-            <form>
-              <Input
-                onChange={handleInputChange}
-                name="title"
-                placeholder="Type of Expense (required)"
-                value={formObject.title}
-              />
-              <Input
-                onChange={handleInputChange}
-                name="type"
-                placeholder="Type of budget(required)"
-                value={formObject.type}
-              />
-              <Input
-                onChange={handleInputChange}
-                name="quantity"
-                placeholder="Quantity (Optional)"
-                value={formObject.quantity}
-              />
-                  <Input
-                onChange={handleInputChange}
-                name="expires"
-                placeholder="Expire Date or Due Date (required)"
-                value={formObject.expires}
-              />
-                  <Input
-                onChange={handleInputChange}
-                name="cost"
-                placeholder="Cost (Optional)"
-                value={formObject.cost}
-              />
-              <FormBtn
-                disabled={!(formObject.type && formObject.title)}
-                onClick={handleFormSubmit}
-              >
-                Submit Item
-              </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>My Budget</h1>
-            </Jumbotron>
-            {budgets.length ? (
+             {/* {budgets.length ? (
               <List>
                 {budgets.map(budget => {
                   return (
@@ -182,8 +136,7 @@ let expensesTotal = 0;
               </List>
             ) : (
               <h3>No Results to Display</h3>
-            )}
-            
+            )} */}
           </Col>
         </Row>
         <Reports expensesTotal = {expensesTotal} budgets={budgets}/>

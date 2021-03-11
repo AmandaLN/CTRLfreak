@@ -7,7 +7,7 @@ import { UserContext } from "../../utils/UserContext";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import PublicRoute from "../../pages/PublicRoute";
-let totalGroceries = 0;
+let totalExpenses = 0;
 let back = {};
 let percentage = [];
 let dataBar = {};
@@ -38,6 +38,7 @@ function Reports({ budgets, expensesTotal }) {
 
   // Load all books and store them with setBooks
   useEffect(() => {
+
     console.log("useEffect");
     fetch("api/users/user", {
       credentials: "include",
@@ -60,7 +61,10 @@ function Reports({ budgets, expensesTotal }) {
     let userName = {
       user: data.username,
     };
-
+    valueGroceries = 0;
+     valueUtilities = 0;
+    valueSubscriptions = 0;
+     totalExpenses = 0;
     console.log(userName, "username");
     await  API.getExpensesbyType("Groceries", userName)
       .then(async (res) => {
@@ -73,26 +77,26 @@ function Reports({ budgets, expensesTotal }) {
             console.log(type._id);
             
             if (type._id === "groceries") {
-              totalGroceries += type.totalType;
+              totalExpenses += type.totalType;
               valueGroceries += type.totalType;
 
-              console.log(totalGroceries);
+              console.log(totalExpenses);
               setGroceries(type.totalType);
               setTotal(budgetsTotal + type.totalType);
             }
             if (type._id === "utilities") {
-              totalGroceries += type.totalType;
+              totalExpenses += type.totalType;
               valueUtilities += type.totalType;
 
-              console.log(totalGroceries);
+              console.log(totalExpenses);
               setUtilities(type.totalType);
               setTotal(budgetsTotal + type.totalType);
             }
             if (type._id === "subscriptions") {
-              totalGroceries += type.totalType;
+              totalExpenses += type.totalType;
               valueSubscriptions += type.totalType;
 
-              console.log(totalGroceries);
+              console.log(totalExpenses);
               setSubscription(type.totalType);
               setTotal(budgetsTotal + type.totalType);
             }
@@ -107,7 +111,7 @@ function Reports({ budgets, expensesTotal }) {
       valueGroceries,
       valueUtilities,
       valueSubscriptions,
-      totalGroceries,
+      totalExpenses,
       "values values values"
     );
     dataBar = {
@@ -119,7 +123,7 @@ function Reports({ budgets, expensesTotal }) {
             valueGroceries,
             valueUtilities,
             valueSubscriptions,
-            totalGroceries,
+            totalExpenses,
           ],
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
@@ -143,7 +147,7 @@ function Reports({ budgets, expensesTotal }) {
       datasets: [
         {
           label: ["Groceries", "Total"],
-          data: [valueGroceries, totalGroceries],
+          data: [valueGroceries, totalExpenses],
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(75, 192, 192, 0.2)",
@@ -167,7 +171,7 @@ function Reports({ budgets, expensesTotal }) {
       datasets: [
         {
           label: ["Utilities", "Total"],
-          data: [valueUtilities, totalGroceries],
+          data: [valueUtilities, totalExpenses],
           backgroundColor: [
             "rgba(54, 162, 235, 0.2)",
             "rgba(75, 192, 192, 0.2)",
@@ -191,7 +195,7 @@ function Reports({ budgets, expensesTotal }) {
       datasets: [
         {
           label: ["Subscriptions", "Total"],
-          data: [valueSubscriptions, totalGroceries],
+          data: [valueSubscriptions, totalExpenses],
           backgroundColor: [
             "rgba(255, 206, 86, 0.2)",
             "rgba(75, 192, 192, 0.2)",
@@ -254,7 +258,7 @@ function Reports({ budgets, expensesTotal }) {
                     <div className="header">
                       <h3 className="title">{typeGraph._id}</h3>
                       <div className="links">
-                      <Link key={typeGraph._id} style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/" + typeGraph._id, type: typeGraph._id, user: user.username}}>Subscriptions</Link>
+                      <Link key={typeGraph._id}style={buttonStyle} className=" btn btn-light font-weight-bold" to={{pathname: "/inventory/" + typeGraph._id, type: typeGraph._id, user: user.username}}>Subscriptions</Link>
                         <a
                           className="btn btn-gh"
                           href={"/inventory/" + typeGraph._id} 

@@ -1,8 +1,8 @@
 import React from "react";
-import Hero from "../components/Hero";
-import Hero1 from "../components/Hero1";
-import Hero2 from "../components/Hero2";
-import Jumbotron from "../components/Jumbotron";
+import Hero from "../../components/Hero";
+import Hero1 from "../../components/Hero1";
+import Hero2 from "../../components/Hero2";
+import Jumbotron from "../../components/Jumbotron";
 
 
 const Welcome = () => {

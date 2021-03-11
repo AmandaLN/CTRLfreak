@@ -8,7 +8,7 @@ function About() {
     return (
         <Wrapper>
         <Row className="justify-content-md-center">
-            <Col size="md-6">
+            <Col size="md-4 text-center">
             <AboutCard 
             name={about[0].name}
             image={about[0].image}
@@ -17,7 +17,7 @@ function About() {
             hobbies={about[0].hobbies}
             />
             </Col>
-            <Col size="md-6">
+            <Col size="md-4 text-center">
             <AboutCard 
             name={about[1].name}
             image={about[1].image}
@@ -28,7 +28,7 @@ function About() {
             </Col>
         </Row>
         <Row className="justify-content-md-center">
->
+
         <Col size="md-6">
         <AboutCard 
             name={about[2].name}

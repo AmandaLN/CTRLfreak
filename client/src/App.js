@@ -13,7 +13,7 @@ import Register from "./components/Register";
 import Reports from "./components/Reports";
 import { Container } from "./components/Grid";
 import PublicRoute from "./pages/PublicRoute";
-import Welcome from "./pages/Welcome.js";
+import Welcome from "./pages/PublicRoute/Welcome";
 import Inventory from "./pages/ProtectedRoute/Inventory";
 import Budget from "./pages/ProtectedRoute/Budget";
 import { UserProvider } from "./utils/UserContext";
