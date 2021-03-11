@@ -26,8 +26,8 @@ const DataBody = ({users}) => {
 				}
 			  var daysDiff = dateDif(new Date(Date.now()), new Date(formatDate(user.expenses.expires)));
 			  let color = "";
-			  if (daysDiff <= 3) color = "text-warning"
-			  if (daysDiff <= 0) color = "text-danger"
+			  if (daysDiff <= 3) color = " font-weight-bold text-dark bg-warning"
+			  if (daysDiff <= 0) color = "font-weight-bold text-white bg-danger"
             return (
               <tr key={user.expenses.title} className={color}>
                   <td data-th="Title" className="name-cell align-middle">
