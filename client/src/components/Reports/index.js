@@ -290,7 +290,7 @@ function Reports({ budgets, expensesTotal }) {
         </Col> */}
         <Col size="md-12">
         <div className="datatable">
-		<h3 className="text-center font-italic">Most Recent Expenses</h3>
+		<h3 className="text-center font-italic">Recent Expense</h3>
             <table id="table" className="table table-striped table-hover text-center border">
             <thead className="bg-primary text-white text-center">
                 <tr>
@@ -316,8 +316,8 @@ function Reports({ budgets, expensesTotal }) {
 				}
 			  var daysDiff = dateDif(new Date(Date.now()), new Date(formatDate(user.expires)));
 			  let color = "";
-			  if (daysDiff <= 3) color = "bg-warning text-black"
-			  if (daysDiff <= 0) color = "bg-danger text-white"
+			  if (daysDiff <= 3) color = "bg-warning font-weight-bold text-black"
+			  if (daysDiff <= 0) color = "bg-danger font-weight-bold text-white"
             return (
               <tr key={user.title} className={color}>
                   <td data-th="Title" className="name-cell align-middle">
