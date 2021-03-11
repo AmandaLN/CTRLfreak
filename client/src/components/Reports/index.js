@@ -240,15 +240,12 @@ function Reports({ budgets, expensesTotal }) {
 
       <Row>
         <Col size="md-12">
-          <h1 className="text-center">Reports</h1>
+          <h1 className="text-center text-primary font-weight-bold" style={{fontSize: 72}}>Report</h1>
         </Col>
+		<HR/>
+		<HR/>
         <Col size="md-12">
-          <h3 className="text-right ">Monthly Breakdown</h3>
-          <HR />
-        </Col>
-        <Col size="md-12">
-          <h3 className="text-right ">Charts</h3>
-          <HR />
+          <h3 className="text-center font-italic mt-5">Monthly Breakdown</h3>
         </Col>
         <Bar key={"barChart1"} data={dataBar} />
       </Row>

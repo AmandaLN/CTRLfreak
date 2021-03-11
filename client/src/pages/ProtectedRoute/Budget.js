@@ -35,7 +35,6 @@ function Budget() {
 
 	return (
 		<>
-			<Nav className="App-header" />
 			<Budgets />
 		</>
 	)
