@@ -22,7 +22,7 @@ const SearchHeader = ({handleSearchChange, typeLocation, user, getInventory}) =>
 			<Row>
 			<div className="container">
 			<input
-                    className="form-control mr-sm-2"
+                    className="form-control mr-sm-2 bg-light"
                     type="search"
                     placeholder="Search"
                     aria-label="Search"

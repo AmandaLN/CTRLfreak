@@ -61,7 +61,7 @@ console.log(users, "this is the right none")
 
 <div className="datatable">
             <table id="table" className="table table-striped table-hover">
-            <thead>
+            <thead className="bg-primary text-white border border-dark">
                 <tr>
                     {headings.map(({name, width}) => {
                         return (
