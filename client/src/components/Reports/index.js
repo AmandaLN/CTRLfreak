@@ -285,13 +285,13 @@ function Reports({ budgets, expensesTotal }) {
         )}
       </Row>
       <Row>
-        <Col size="md-12">
-          <h3 className="text-right ">Most Recent Expenses</h3>
-          <HR />
-        </Col>
+        {/* <Col size="md-12">
+          <h3 className="text-center font-italic">Most Recent Expenses</h3>
+        </Col> */}
         <Col size="md-12">
         <div className="datatable mt-5">
-            <table id="table" className="table table-striped table-hover">
+		<h3 className="text-center font-italic">Most Recent Expenses</h3>
+            <table id="table" className="table table-striped table-hover text-center border">
             <thead>
                 <tr>
                     {headings.map(({name, width}) => {
