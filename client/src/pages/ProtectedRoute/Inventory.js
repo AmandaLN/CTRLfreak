@@ -19,6 +19,7 @@ function Inventory() {
   const [budget, setExpenses] = useState([{}]);
   const [filteredBudget, setFilteredBudget] = useState([{}]);
   const [locationPage, setLocation] = useState("");
+  const [order, setOrder] = useState("ascend");
   // const [typeLocation, setType] = useState();
   // const { user } = useContext(UserContext);
 
@@ -67,7 +68,7 @@ function Inventory() {
       getInventory(typeLocation, username)
       // getTypeInventory(userLocation);
       
-    }, [typeLocation]);
+    }, [typeLocation, filterBudget]);
     // filters the table while you are typing in search
     
     
@@ -104,22 +105,22 @@ function Inventory() {
   }
 
   function handleSort() {
-    if (this.state.order === "descend") {
-      this.setState({
+    if (order === "descend") {
+      setOrder({
         order: "ascend",
       });
     } else {
-      this.setState({
+      setOrder({
         order: "descend",
       });
     }
     function compareFnc(a, b) {
-      if (this.state.order === "ascend") {
+      if (order === "ascend") {
         if (a[heading] === undefined) {
           return 1;
         } else if (b[heading] === undefined) {
           return -1;
-        } else if (heading === "name") {
+        } else if (heading === "title") {
           return a[heading].first.localeCompare(b[heading].first);
         } else {
           return b[heading] - a[heading];
@@ -129,15 +130,16 @@ function Inventory() {
           return 1;
         } else if (b[heading] === undefined) {
           return -1;
-        } else if (heading === "name") {
+        } else if (heading === "title") {
           return b[heading].first.localeCompare(a[heading].first);
         } else {
           return b[heading] - a[heading];
         }
       }
     }
-    const sortedTable = this.state.filteredTable.sort(compareFnc);
-    setFilteredBudget({...filteredBudget, sortedTable });
+    const sortedTable = filterBudget.sort(compareFnc);
+    setFilteredBudget({...filteredBudget, filterBudget });
+    filterBudget = sortedTable
   }
 
   return (
