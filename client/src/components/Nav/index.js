@@ -61,7 +61,7 @@ function Nav() {
           {user.username ? 
         
                   <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle text-white font-weight-bold btn btn-primary rounded-pill px-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a className="nav-link dropdown-toggle text-white border border-primary font-weight-bold btn btn-primary rounded-pill px-4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Itemization
                   </a>
                   <div className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -74,10 +74,10 @@ function Nav() {
             ""}
           <div className="container mr-5">
 			  <li className="nav-item">
-				<Link style={buttonStyle} className=" btn btn-warning font-weight-bold" to="/public">About Us</Link>
-		    <Link style={buttonStyle} className="btn btn-warning font-weight-bold" to="/protected">Budget</Link>
+				<Link style={buttonStyle} className=" btn btn-primary text-white font-weight-bold border border-primary rounded-pill px-4" to="/public">About Us</Link>
+		    <Link style={buttonStyle} className="btn btn-primary text-white border border-primary font-weight-bold rounded-pill px-4" to="/protected">Budget</Link>
 				{user.username ? "" :
-				<Link style={buttonStyle} className="btn btn-white border border-primary font-weight-bold text-primary rounded-pill px-4" to="/register">Sign Up</Link>
+				<Link style={buttonStyle} className="btn btn-primary border border-primary font-weight-bold text-white rounded-pill px-4" to="/register">Sign Up</Link>
 				}
 				<AuthButton />
 			</li>
