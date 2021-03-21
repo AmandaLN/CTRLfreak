@@ -32,7 +32,7 @@ function LoginForm({ onLogin }) {
 					</div>
 					<div className="form-check">
 						<input type="checkbox" className="form-check-input" id="exampleCheck1" />
-						<label className="form-check-label" for="exampleCheck1">Remember me</label>
+						<label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
 					</div>
 					<br/>
 						<button type="submit" className="btn btn-primary border btn-lg btn-block rounded font-weight-bold">Log In</button>

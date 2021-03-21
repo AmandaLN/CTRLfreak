@@ -24,12 +24,12 @@ defaults.global.legend.position = "bottom";
 
 /* This is a very simple component.. it probably doesn't need to be a smart component at this point but you never know what's goingto happen in the future */
 
-function Reports({ budgets, expensesTotal }) {
+function Reports({ budgets, expensesTotal, user }) {
   const [budgetsbyType, setbudgetsbyType] = useState({});
   const [budgetsGroceries, setGroceries] = useState(0);
   const [budgetsUtilities, setUtilities] = useState(0);
   const [budgetsSubscription, setSubscription] = useState(0);
-  const [user, dispatch] = useContext(UserContext);
+  // const [user, dispatch] = useContext(UserContext);
   const [budgetsTotal, setTotal] = useState(0);
   // const [dataBar, setDataBar] = useState({})
 
@@ -47,21 +47,25 @@ function Reports({ budgets, expensesTotal }) {
   // Load all books and store them with setBooks
   useEffect(() => {
     console.log("useEffect");
-    fetch("api/users/user", {
-      credentials: "include",
-    })
-      .then((res) => {
-        console.log(`response to authenticate ${res}`);
-        console.log(res, "yesyes");
-        return res.json(res);
-      })
-      .then((data) => {
-        console.log(data, "checkdata");
-        getValuesType(data);
-      })
-      .catch((err) => {
-        console.log("Error fetching authorized user.");
-      });
+    if (!user) {
+			return;
+		  }
+    // fetch("api/users/user", {
+    //   credentials: "include",
+    // })
+    //   .then((res) => {
+    //     console.log(`response to authenticate ${res}`);
+    //     console.log(res, "yesyes");
+    //     return res.json(res);
+    //   })
+    //   .then((data) => {
+    //     console.log(data, "checkdata");
+    //     getValuesType(data);
+    //   })
+    //   .catch((err) => {
+    //     console.log("Error fetching authorized user.");
+    //   });
+      getValuesType(user);
   }, []);
 
   async function getValuesType(data) {
@@ -282,7 +286,7 @@ function Reports({ budgets, expensesTotal }) {
         </Col> */}
         <Col size="md-12">
           <div className="datatable">
-            <h3 className="text-center font-italic">Recent Expense</h3>
+            <h3 className="text-center font-italic">Recent Expenses</h3>
             <table
               id="table"
               className="table table-striped table-hover text-center border"
@@ -328,7 +332,7 @@ function Reports({ budgets, expensesTotal }) {
                           {formatDate(user.expires)}
                         </td>
                         <td data-th="Cost" className="align-middle">
-                          {user.cost}
+                          ${user.cost}.00
                         </td>
                         <td data-th="Type" className="align-middle">
                           {user.type}
@@ -346,7 +350,7 @@ function Reports({ budgets, expensesTotal }) {
                   <td data-th="Title" className="align-middle"></td>
                   <td data-th="Title" className="align-middle"></td>
                   <td data-th="Total" className="align-middle font-weight-bold">
-                    {totalExpenses}
+                    ${totalExpenses}.00
                   </td>
                   <td data-th="Title" className="align-middle "></td>
                 </tr>

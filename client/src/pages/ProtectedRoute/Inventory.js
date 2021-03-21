@@ -1,7 +1,8 @@
 /* This is a very simple component.. it probably doesn't need to be a smart component at this point but you never know what's goingto happen in the future */
-import React, {useEffect, useState } from "react";
+import React, {useEffect, useState , useContext} from "react";
 import API from "../../utils/API";
 import {useLocation} from "react-router-dom";
+import { Link } from "react-router-dom";
 // import Search from "../../components/Search"
 import { List, ListItem } from "../../components/List";
 import { UserContext } from "../../utils/UserContext";
@@ -11,18 +12,18 @@ import ExpenseTable from "../../components/DataBody";
 let activeUser;
 let budgetInventory = [];
 let filterBudget = []
- let typeLocation ;
+ let typeLocation ="";
  let userLocation;
 
 
 function Inventory() {
+  const [user, dispatch] = useContext(UserContext);
   const [budget, setExpenses] = useState([{}]);
   const [filteredBudget, setFilteredBudget] = useState([{}]);
   const [locationPage, setLocation] = useState("");
   const [order, setOrder] = useState("ascend");
   // const [typeLocation, setType] = useState();
   // const { user } = useContext(UserContext);
-
 
   const headings = [
     { name: "Title", width: "10%" },
@@ -36,12 +37,16 @@ function Inventory() {
   let location = useLocation();
  
   console.log(location);
-  userLocation = location.user
-  typeLocation = location.type
 
 
+  const buttonStyle = {
+    marginRight: 10
+  };
   useEffect(() => {
-    setLocation(...locationPage, location.type)
+   
+    userLocation = location.user
+    typeLocation = location.type
+    setLocation(...locationPage, typeLocation)
     // fetch("api/users/user", {
     //   credentials: "include",
     // })
@@ -68,7 +73,7 @@ function Inventory() {
       getInventory(typeLocation, username)
       // getTypeInventory(userLocation);
       
-    }, [typeLocation, filterBudget]);
+    }, [locationPage, filterBudget]);
     // filters the table while you are typing in search
     
     
@@ -81,8 +86,8 @@ function Inventory() {
      budgetInventory = res.data
      filterBudget = res.data
      console.log(budgetInventory, "budget inventory")
-         setExpenses(...budget, res.data[0].expenses);
-         setFilteredBudget(...filteredBudget, res.data[0].expenses);
+         setExpenses(...budget, res.data.expenses);
+         setFilteredBudget(...filteredBudget, res.data.expenses);
          console.log(budget, filteredBudget, "trying budget and filtered")
        })
        .catch((err) => console.log(err));
@@ -126,7 +131,7 @@ function Inventory() {
         } else if (b[heading] === undefined) {
           return -1;
         } else if (heading === "title") {
-          return a[heading].first.localeCompare(b[heading].first);
+          return a[heading].localeCompare(b[heading]);
         } else {
           return b[heading] - a[heading];
         }
@@ -136,24 +141,24 @@ function Inventory() {
         } else if (b[heading] === undefined) {
           return -1;
         } else if (heading === "title") {
-          return b[heading].first.localeCompare(a[heading].first);
+          return b[heading].localeCompare(a[heading]);
         } else {
           return b[heading] - a[heading];
         }
       }
     }
     const sortedTable = filterBudget.sort(compareFnc);
-    setFilteredBudget({...filteredBudget, filterBudget });
     filterBudget = sortedTable
+    setFilteredBudget({...filteredBudget, sortedTable });
   }
 
   return (
     <>
       <div className="container text-center">
-        <SearchHeader handleSearchChange={handleSearchChange} user={userLocation} typeLocation={typeLocation} getInventory={getInventory}/>
+       <SearchHeader handleSearchChange={handleSearchChange} user={userLocation} typeLocation={typeLocation} getInventory={getInventory}/>
        <DataTable
             headings={headings}
-            users={filterBudget}
+            filterBudget={filterBudget}
             handleSort={handleSort}
             deleteBudget={deleteBudget}
           />

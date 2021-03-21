@@ -14,10 +14,13 @@ let deleteUser = {
 }
 let expensesTotal = 0;
 
- function Budgets() {
+ function Budgets({user}) {
   // Setting our component's initial state
   // const [user, dispatch] = useContext(UserContext);
-  const [budgets, setBudgets] = useState([])
+console.log(user, "buidgets paopo")
+  const [budgets, setBudgets] = useState({
+
+  })
   const [formObject, setFormObject] = useState({
     title: "",
     type: "",
@@ -29,25 +32,29 @@ let expensesTotal = 0;
   // Load all books and store them with setBooks
    useEffect(() => {
  
-    fetch('api/users/user', {
-			credentials: 'include'
-			})
-			.then((res) => {
-				console.log(`response to authenticate ${res}`);
-				console.log(res, "yesyes")
-				return res.json(res)
-			})
-			.then(  data => {
-        activeUser = data.username
-        deleteUser.user = data.username
-        console.log(data, "protected route index");
+    // fetch('api/users/user', {
+		// 	credentials: 'include'
+		// 	})
+		// 	.then((res) => {
+		// 		console.log(`response to authenticate ${res}`);
+		// 		console.log(res, "yesyes")
+		// 		return res.json(res)
+		// 	})
+		// 	.then(  data => {
+    //     activeUser = data.username
+    //     deleteUser.user = data.username
+    //     console.log(data, "protected route index");
+	  //     console.log(activeUser, "testing budget username")
+    //     loadBudget(data.username)
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log('Error fetching authorized user.');
+		// 	});
+       activeUser = user.username
+        deleteUser.user = user.username
+        console.log(user, "protected route index");
 	      console.log(activeUser, "testing budget username")
-        loadBudget(data.username)
-			})
-			.catch((err) => {
-				console.log('Error fetching authorized user.');
-			});
-  
+        loadBudget(user.username)
   }, [])
 
   function formatDate(date){
@@ -139,7 +146,7 @@ let expensesTotal = 0;
             )} */}
           </Col>
         </Row>
-        <Reports expensesTotal = {expensesTotal} budgets={budgets}/>
+        <Reports user = {user} expensesTotal = {expensesTotal} budgets={budgets}/>
         {/* <GroceryTable budgets={budgets}/> */}
       </Container>
     );
