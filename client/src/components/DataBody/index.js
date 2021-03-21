@@ -43,7 +43,7 @@ const DataBody = ({users, deleteBudget}) => {
                   {formatDate(user.expenses.expires)}
                 </td>
                 <td data-th="Cost" className="align-middle">
-                    {user.expenses.cost}
+                    ${user.expenses.cost}.00
                 </td>
 				<td data-th="Type" className="align-middle">
                     {user.expenses.type} <DeleteBtn onClick={() => deleteBudget(user.expenses._id, deleteUser)} />
